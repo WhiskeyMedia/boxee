@@ -1,0 +1,16 @@
+<app>
+  <id>giantbomb</id>
+  <name>Giant Bomb</name>
+  <version>1.0</version>
+  <description>Watch all of Giant Bomb's videos.</description>
+  <thumb>/skin/Boxee Skin NG/media/thumb.png</thumb>
+  <repository>http://dir.boxee.tv/apps</repository>
+  <media>video</media>
+  <copyright>whiskeymedia</copyright>
+  <email>sam@whiskeymedia.com</email>
+  <type>skin</type>
+  <startWindow>14000</startWindow>
+  <platform>all</platform>
+  <minversion>0.9.21</minversion>
+  <test-app>true</test-app>
+</app>
