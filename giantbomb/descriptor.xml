@@ -1,16 +1,15 @@
 <app>
   <id>giantbomb</id>
   <name>Giant Bomb</name>
-  <version>1.0</version>
-  <description>Watch all of Giant Bomb's videos.</description>
-  <thumb>/skin/Boxee Skin NG/media/thumb.png</thumb>
+  <version>1.6</version>
+  <description>Check videos, podcasts and live streaming from GiantBomb.com. Data created and powered by GiantBomb.com</description>
+  <thumb>http://whimais.googlecode.com/svn/plugin%20data/branches/giantbomb%20-%20boxee/icon.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>
-  <copyright>whiskeymedia</copyright>
-  <email>sam@whiskeymedia.com</email>
+  <copyright>Anders Bugge, Dan Bush (dan@danbush.me)</copyright>
+  <email>whimais@gmail.com</email>
   <type>skin</type>
   <startWindow>14000</startWindow>
   <platform>all</platform>
   <minversion>0.9.21</minversion>
-  <test-app>true</test-app>
 </app>
