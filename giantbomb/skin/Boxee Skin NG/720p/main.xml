@@ -5,9 +5,9 @@
    <onload lang="python">
 <![CDATA[
 import menu
-category_menu = menu.get_category_menu()
-if category_menu:
-   mc.GetActiveWindow().GetList(100).SetItems(category_menu)
+categories = menu.get_categories()
+if categories:
+   mc.GetActiveWindow().GetList(100).SetItems(categories)
 ]]>
    </onload>
     <controls>
@@ -20,39 +20,78 @@ if category_menu:
                 <texture>background.png</texture>
             </control>
             <control type="list" id="100">
-               <width>600</width>
-               <height>100</height>
+               <width>1280</width>
+               <height>300</height>
                <orientation>horizontal</orientation>
-               <itemlayout width="100" height="100">
+               <itemlayout width="100" height="300">
                   <control type="label">
-                     <width>100</width>
-                     <height>60</height>
-                     <font>sans18</font>
+                     <width>300</width>
+                     <height>150</height>
+                     <font>sans20</font>
                      <align>center</align>
                      <aligny>center</aligny>
                      <label>$INFO[ListItem.Label]</label>
                      <textcolor>white</textcolor>
                   </control>
                </itemlayout>
-               <focusedlayout width="100" height="100">
-                  <control type="image">
-                     <width>100</width>
-                     <height>100</height>
-                     <texture>background-showfocused.png</texture>
-                  </control>
+               <focusedlayout width="100" height="300">
                   <control type="label">
-                     <width>100</width>
-                     <height>60</height>
-                     <font>sans18</font>
+                     <width>300</width>
+                     <height>100</height>
+                     <font>sans20</font>
                      <align>center</align>
                      <aligny>center</aligny>
                      <label>$INFO[ListItem.Label]</label>
                      <textcolor>white</textcolor>
                   </control>
                </focusedlayout>
-               <content type="action">
-               </content>
+                  <onclick lang="python">
+<![CDATA[
+cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
+videos = menu.get_videos(cat_id)
+if videos:
+   mc.GetActiveWindow().GetList(120).SetItems(videos)
+]]>
+                  </onclick>
             </control>
+
+
+
+
+
+            <control type="list" id="120">
+               <width>300</width>
+               <height>720</height>
+               <orientation>vertical</orientation>
+               <itemlayout width="100" height="300">
+                  <control type="label">
+                     <width>300</width>
+                     <height>150</height>
+                     <font>sans20</font>
+                     <align>center</align>
+                     <aligny>center</aligny>
+                     <label>$INFO[ListItem.Label]</label>
+                     <textcolor>white</textcolor>
+                  </control>
+               </itemlayout>
+               <focusedlayout width="100" height="300">
+                  <control type="label">
+                     <width>300</width>
+                     <height>100</height>
+                     <font>sans20</font>
+                     <align>center</align>
+                     <aligny>center</aligny>
+                     <label>$INFO[ListItem.Label]</label>
+                     <textcolor>white</textcolor>
+                  </control>
+               </focusedlayout>
+
+            </control>
+
+
+
+
+
         </control>
     </controls>
 </window>
