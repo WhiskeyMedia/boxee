@@ -5,6 +5,8 @@
    <onload lang="python">
 <![CDATA[
 import menu
+
+mc.GetActiveWindow().GetControl(120).SetVisible(False)
 categories = menu.get_categories()
 if categories:
    mc.GetActiveWindow().GetList(100).SetItems(categories)
@@ -22,21 +24,21 @@ if categories:
                <width>1280</width>
                <height>300</height>
                <orientation>horizontal</orientation>
-               <itemlayout width="100" height="300">
+               <itemlayout width="150">
                   <control type="label">
                      <width>720</width>
                      <height>150</height>
-                     <font>sans20</font>
+                     <align>center</align>
                      <aligny>center</aligny>
                      <label>$INFO[ListItem.Label]</label>
                      <textcolor>white</textcolor>
                   </control>
                </itemlayout>
-               <focusedlayout width="100" height="300">
+               <focusedlayout width="150">
                   <control type="label">
                      <width>720</width>
                      <height>100</height>
-                     <font>sans20</font>
+                     <align>center</align>
                      <aligny>center</aligny>
                      <label>$INFO[ListItem.Label]</label>
                      <textcolor>white</textcolor>
@@ -49,7 +51,10 @@ cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
 videos = menu.get_videos(cat_id)
 if videos:
    mc.GetActiveWindow().GetList(120).SetItems(videos)
-   mc.GetWindow(14000).GetControl(120).SetFocus()
+
+mc.GetActiveWindow().PushState()
+mc.GetActiveWindow().GetControl(120).SetVisible(True)
+mc.GetActiveWindow().GetControl(120).SetFocus()
 ]]>
                      </onclick>
                   </content>
@@ -60,33 +65,32 @@ if videos:
 
 
             <control type="list" id="120">
-<!--                <animation type="Conditional" condition="Window.IsVisible(DialogProgress.xml)">
+               <visible>false</visible>
+               <posy>100</posy>
+               <posx>50</posx>
+               <animation type="Conditional" condition="Window.IsVisible(DialogProgress.xml)">
                   <effect type="fade" start="100" end="20" time="200"/>
-               </animation> -->
+               </animation>
                <width>500</width>
-               <height>500</height>
+               <height>620</height>
                <orientation>vertical</orientation>
-               <itemlayout width="100" height="50">
+               <itemlayout height="50">
                   <control type="label">
                      <posx>0</posx>
-                     <width>300</width>
+                     <width>500</width>
                      <height>50</height>
-                     <font>sans20</font>
-                     <align>center</align>
                      <aligny>center</aligny>
                      <label>$INFO[ListItem.Label]</label>
                      <textcolor>white</textcolor>
                   </control>
                </itemlayout>
-               <focusedlayout width="100" height="50">
+               <focusedlayout height="50">
                   <control type="label">
-                     <width>300</width>
+                     <width>500</width>
                      <height>50</height>
-                     <font>sans20</font>
-                     <align>center</align>
                      <aligny>center</aligny>
                      <label>$INFO[ListItem.Label]</label>
-                     <textcolor>black</textcolor>
+                     <textcolor>red</textcolor>
                   </control>
                </focusedlayout>
             </control>
