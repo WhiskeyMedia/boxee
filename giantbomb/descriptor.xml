@@ -3,7 +3,7 @@
   <name>Giant Bomb</name>
   <version>1.0</version>
   <description>Watch all of Giant Bomb's videos.</description>
-  <thumb>/skin/Boxee Skin NG/media/thumb.png</thumb>
+  <thumb>thumb.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>
   <copyright>whiskeymedia</copyright>
