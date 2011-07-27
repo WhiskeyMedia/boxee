@@ -26,28 +26,33 @@ if not mc.GetWindow(14000).GetList(100).GetItems():
                 <height>720</height>
                 <texture>background.png</texture>
             </control>
-            <control type="list" id="100">
+            <control type="wraplist" id="100">
+                <focusposition>3</focusposition>
                 <posx>200</posx>
                 <posy>25</posy>
-                <width>1280</width>
-                <height>75</height>
+                <width>1080</width>
+                <height>150</height>
                 <orientation>horizontal</orientation>
                 <itemlayout width="150">
                     <control type="label">
+                        <width>150</width>
                         <posy>25</posy>
                         <align>center</align>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
+                        <wrapmultiline>true</wrapmultiline>
                     </control>
                 </itemlayout>
                 <focusedlayout width="150">
                     <control type="label">
+                        <width>150</width>
                         <posy>25</posy>
                         <align>center</align>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>red</textcolor>
+                        <wrapmultiline>true</wrapmultiline>
                     </control>
                 </focusedlayout>
                 <content type="action">
