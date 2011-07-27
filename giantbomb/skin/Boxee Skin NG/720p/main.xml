@@ -28,7 +28,7 @@ if not mc.GetWindow(14000).GetList(100).GetItems():
             </control>
             <control type="wraplist" id="100">
                 <focusposition>3</focusposition>
-                <posx>200</posx>
+                <posx>250</posx>
                 <posy>25</posy>
                 <width>1080</width>
                 <height>150</height>
