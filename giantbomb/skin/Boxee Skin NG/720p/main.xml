@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <window type="window" id="14000">
-    <defaultcontrol>100</defaultcontrol>
+    <defaultcontrol always="false">100</defaultcontrol>
     <allowoverlay>no</allowoverlay>
     <animation effect="fade" time="100">WindowOpen</animation>
     <animation effect="slide" end="0,576" time="100">WindowClose</animation>
@@ -27,7 +27,6 @@ if not mc.GetWindow(14000).GetList(100).GetItems():
                 <texture>background.png</texture>
             </control>
             <control type="list" id="100">
-                <visible>true</visible>
                 <posx>200</posx>
                 <posy>25</posy>
                 <width>1280</width>
@@ -78,7 +77,7 @@ mc.GetActiveWindow().GetControl(120).SetFocus()
                 <posy>100</posy>
                 <posx>50</posx>
                 <width>500</width>
-                <height>620</height>
+                <height>600</height>
                 <orientation>vertical</orientation>
                 <itemlayout height="50">
                     <control type="label">
@@ -111,10 +110,11 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>750</posx>
-                <posy>150</posy>
-                <height>200</height>
-                <width>500</width>
+                <font>sans30b</font>
+                <posx>650</posx>
+                <posy>100</posy>
+                <width>600</width>
+                <height>100</height>
                 <align>left</align>
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.Label]</label>
@@ -124,10 +124,10 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>750</posx>
-                <posy>300</posy>
+                <posx>650</posx>
+                <posy>200</posy>
+                <width>600</width>
                 <height>200</height>
-                <width>500</width>
                 <align>left</align>
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.property(description)]</label>
@@ -137,10 +137,10 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="largeimage">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>750</posx>
-                <posy>400</posy>
-                <align>right</align>
-                <aligny>center</aligny>
+                <posx>650</posx>
+                <posy>325</posy>
+                <width>600</width>
+                <height>400</height>
                 <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(120).ListItem().Thumb]</texture>
             </control>

@@ -12,6 +12,13 @@ def get_categories():
     category_data = simplejson.loads(response.read())['results']
 
     categories = mc.ListItems()
+
+    # Latest category
+    item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
+    item.SetLabel('Latest'.encode('utf-8'))
+    item.SetProperty('id', 'latest'.encode('utf-8'))
+    categories.append(item)
+
     for cat in category_data:
         item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
         item.SetLabel(cat['name'].encode('utf-8'))
@@ -21,16 +28,18 @@ def get_categories():
     return categories
 
 def get_videos(cat_id):
-    response = urllib2.urlopen('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&video_type=' + cat_id + '&sort=-publish_date&format=json')
+    if cat_id == 'latest':
+        response = urllib2.urlopen('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&sort=-publish_date&format=json')
+    else:
+        response = urllib2.urlopen('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&video_type=' + cat_id + '&sort=-publish_date&format=json')
+
     video_data = simplejson.loads(response.read())['results']
 
     videos = mc.ListItems()
     for vid in video_data:
-        deck = vid['deck'].encode('utf-8')
         item = mc.ListItem(mc.ListItem.MEDIA_VIDEO_CLIP)
         item.SetLabel(vid['name'].encode('utf-8'))
-        item.SetDescription(deck)
-        item.SetProperty('deck', deck)
+        item.SetDescription(vid['deck'].encode('utf-8'))
         item.SetThumbnail(vid['image']['super_url'].encode('utf-8'))
         item.SetPath('http://media.giantbomb.com/video/' + vid['url'].replace('.mp4', '_1500.mp4').encode('utf-8'))
         videos.append(item)
