@@ -1,5 +1,5 @@
-import mc
-import menu
+# import mc
+# import menu
 
 # '''
 # here we can do some pre launch processing if we wish.

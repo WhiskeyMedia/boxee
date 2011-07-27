@@ -1,16 +1,22 @@
 <?xml version="1.0"?>
 <window type="window" id="14000">
-    <defaultcontrol always="false">100</defaultcontrol>
+    <defaultcontrol>100</defaultcontrol>
     <allowoverlay>no</allowoverlay>
     <animation effect="fade" time="100">WindowOpen</animation>
     <animation effect="slide" end="0,576" time="100">WindowClose</animation>
     <onload lang="python">
 <![CDATA[
 import menu
+
 mc.GetPlayer().Stop()
-categories = menu.get_categories()
-if categories:
-    mc.GetActiveWindow().GetList(100).SetItems(categories)
+
+mc.GetWindow(14000).GetList(100).SetFocusedItem(menu.lf_category)
+mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
+
+if not mc.GetWindow(14000).GetList(100).GetItems():
+    categories = menu.get_categories()
+    if categories:
+        mc.GetActiveWindow().GetList(100).SetItems(categories)
 ]]>
     </onload>
     <controls>
@@ -48,6 +54,11 @@ if categories:
                 <content type="action">
                     <onclick lang="python">
 <![CDATA[
+menu.lf_category = mc.GetWindow(14000).GetList(100).GetFocusedItem()
+
+mc.GetWindow(14000).GetList(100).SetFocusedItem(menu.lf_category)
+mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
+
 cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
 mc.ShowDialogWait()
 videos = menu.get_videos(cat_id)
@@ -91,6 +102,8 @@ mc.GetActiveWindow().GetControl(120).SetFocus()
                 <content type="action">
                     <onclick lang="python">
 <![CDATA[
+menu.lf_video = mc.GetWindow(14000).GetList(120).GetFocusedItem()
+
 mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
 ]]>
                     </onclick>

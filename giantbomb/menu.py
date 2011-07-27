@@ -4,7 +4,8 @@ import urllib2
 
 API_KEY = 'e5529a761ee3394ffbd237269966e9f53a4c7bf3'
 
-last_focused_category = None
+lf_category = 0
+lf_video = 0
 
 def get_categories():
     response = urllib2.urlopen('http://api.giantbomb.com/video_types/?api_key=' + API_KEY + '&format=json')
