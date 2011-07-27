@@ -36,12 +36,15 @@ def get_videos(cat_id):
     video_data = simplejson.loads(response.read())['results']
 
     videos = mc.ListItems()
+
     for vid in video_data:
+        date = vid['publish_date'].encode('utf-8').split(' ')[0].split('-')
         item = mc.ListItem(mc.ListItem.MEDIA_VIDEO_CLIP)
         item.SetLabel(vid['name'].encode('utf-8'))
         item.SetDescription(vid['deck'].encode('utf-8'))
         item.SetThumbnail(vid['image']['super_url'].encode('utf-8'))
         item.SetPath('http://media.giantbomb.com/video/' + vid['url'].replace('.mp4', '_1500.mp4').encode('utf-8'))
+        item.SetDate(int(date[0]), int(date[1]), int(date[2]))
         videos.append(item)
 
     return videos
