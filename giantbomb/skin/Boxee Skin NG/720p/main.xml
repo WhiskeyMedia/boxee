@@ -8,15 +8,16 @@
 <![CDATA[
 import menu
 
-mc.GetPlayer().Stop()
-
 mc.GetWindow(14000).GetList(100).SetFocusedItem(menu.lf_category)
+mc.GetWindow(14000).GetList(110).SetFocusedItem(menu.lf_erun)
 mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
 
-if not mc.GetWindow(14000).GetList(100).GetItems():
+mc.GetPlayer().Stop()
+
+if len(mc.GetWindow(14000).GetList(100).GetItems()) == 0:
     categories = menu.get_categories()
     if categories:
-        mc.GetActiveWindow().GetList(100).SetItems(categories)
+        mc.GetWindow(14000).GetList(100).SetItems(categories)
 ]]>
     </onload>
     <controls>
@@ -60,22 +61,73 @@ if not mc.GetWindow(14000).GetList(100).GetItems():
 <![CDATA[
 menu.lf_category = mc.GetWindow(14000).GetList(100).GetFocusedItem()
 
-mc.GetWindow(14000).GetList(100).SetFocusedItem(menu.lf_category)
-mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
-
 cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
 mc.ShowDialogWait()
-videos = menu.get_videos(cat_id)
-if videos:
-   mc.GetActiveWindow().GetList(120).SetItems(videos)
-mc.HideDialogWait()
 
-mc.GetActiveWindow().PushState()
-mc.GetActiveWindow().GetControl(120).SetVisible(True)
-mc.GetActiveWindow().GetControl(120).SetFocus()
+if cat_id == '5':
+    eruns = menu.get_eruns()
+    mc.GetWindow(14000).GetList(110).SetItems(eruns)
+    next_menu = 110
+else:
+    videos = menu.get_videos(cat_id)
+    mc.GetWindow(14000).GetList(120).SetItems(videos)
+    next_menu = 120
+
+mc.HideDialogWait()
+mc.GetWindow(14000).PushState()
+mc.GetWindow(14000).GetControl(next_menu).SetVisible(True)
+mc.GetWindow(14000).GetControl(next_menu).SetFocus()
 ]]>
                     </onclick>
                 </content>
+            </control>
+            <control type="list" id="110">
+                <visible>false</visible>
+                <posy>100</posy>
+                <posx>50</posx>
+                <width>550</width>
+                <height>600</height>
+                <orientation>vertical</orientation>
+                <itemlayout height="50">
+                    <control type="label">
+                        <font>font26</font>
+                        <posx>0</posx>
+                        <width>550</width>
+                        <height>50</height>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>white</textcolor>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="50">
+                    <control type="label">
+                        <font>font26</font>
+                        <width>550</width>
+                        <height>50</height>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>red</textcolor>
+                        <scroll>true</scroll>
+                    </control>
+                </focusedlayout>
+                <content type="action">
+                    <onclick lang="python">
+<![CDATA[
+menu.lf_erun = mc.GetWindow(14000).GetList(110).GetFocusedItem()
+
+erun_id = mc.GetFocusedItem(14000, 110).GetProperty('id')
+mc.ShowDialogWait()
+videos = menu.get_videos(erun_id)
+mc.GetWindow(14000).GetList(120).SetItems(videos)
+mc.HideDialogWait()
+
+mc.GetWindow(14000).PushState()
+mc.GetWindow(14000).GetControl(110).SetVisible(False)
+mc.GetWindow(14000).GetControl(120).SetVisible(True)
+mc.GetWindow(14000).GetControl(120).SetFocus()
+]]>
+                    </onclick>
+               </content>
             </control>
             <control type="list" id="120">
                 <visible>false</visible>
