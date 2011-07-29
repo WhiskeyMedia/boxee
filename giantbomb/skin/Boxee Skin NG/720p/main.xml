@@ -231,6 +231,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.Label]</label>
                 <textcolor>white</textcolor>
+                <shadowcolor>AA000000</shadowcolor>
                 <wrapmultiline>true</wrapmultiline>
             </control>
             <control type="label">
@@ -243,6 +244,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.property(description)]</label>
                 <textcolor>white</textcolor>
+                <shadowcolor>AA000000</shadowcolor>
                 <wrapmultiline>true</wrapmultiline>
             </control>
             <control type="label">
@@ -255,6 +257,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.Date]</label>
                 <textcolor>white</textcolor>
+                <shadowcolor>AA000000</shadowcolor>
             </control>
             <control type="image">
                 <visible>Control.HasFocus(120)</visible>
