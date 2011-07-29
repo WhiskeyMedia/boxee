@@ -55,25 +55,37 @@ mc.GetPlayer().Stop()
             <control type="wraplist" id="100">
                 <focusposition>3</focusposition>
                 <posx>200</posx>
-                <posy>25</posy>
+                <posy>0</posy>
                 <width>1080</width>
                 <height>150</height>
                 <orientation>horizontal</orientation>
-                <itemlayout width="175">
+                <itemlayout width="180">
                     <control type="label">
-                        <width>175</width>
+                        <posy>25</posy>
+                        <width>180</width>
+                        <height>150</height>
                         <align>center</align>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
-                        <wrapmultiline>true</wrapmultiline>
+                        <shadowcolor>AA000000</shadowcolor>
                     </control>
                 </itemlayout>
-                <focusedlayout width="175">
+                <focusedlayout width="180">
+                    <control type="image">
+                        <width>180</width>
+                        <height>130</height>
+                        <posx>-90</posx>
+                        <posy>-55</posy>
+                        <texture>bg_listFocus_970x100.png</texture>
+                    </control>
                     <control type="label">
-                        <width>175</width>
+                        <posy>25</posy>
+                        <width>180</width>
+                        <height>150</height>
                         <align>center</align>
                         <label>$INFO[ListItem.Label]</label>
-                        <textcolor>FFFF0000</textcolor>
+                        <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
                     </control>
                 </focusedlayout>
                 <content type="action">
@@ -119,6 +131,7 @@ mc.GetWindow(14000).GetControl(next_menu).SetFocus()
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
                     </control>
                 </itemlayout>
                 <focusedlayout height="50">
@@ -136,6 +149,7 @@ mc.GetWindow(14000).GetControl(next_menu).SetFocus()
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
                     </control>
                 </focusedlayout>
                 <content type="action">
