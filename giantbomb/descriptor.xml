@@ -9,7 +9,7 @@
   <copyright>whiskeymedia</copyright>
   <email>sam@whiskeymedia.com</email>
   <type>skin</type>
-  <startWindow>14000</startWindow>
+  <startWindow>start</startWindow>
   <platform>all</platform>
   <minversion>0.9.21</minversion>
   <test-app>true</test-app>

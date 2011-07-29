@@ -13,11 +13,6 @@ mc.GetWindow(14000).GetList(110).SetFocusedItem(menu.lf_erun)
 mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
 
 mc.GetPlayer().Stop()
-
-if len(mc.GetWindow(14000).GetList(100).GetItems()) == 0:
-    categories = menu.get_categories()
-    if categories:
-        mc.GetWindow(14000).GetList(100).SetItems(categories)
 ]]>
     </onload>
     <controls>
@@ -25,21 +20,48 @@ if len(mc.GetWindow(14000).GetList(100).GetItems()) == 0:
             <control type="image">
                 <width>1280</width>
                 <height>720</height>
-                <texture>background.png</texture>
+                <texture>wall_lincoln_1920x1080.png</texture>
+            </control>
+            <control type="image">
+                <width>1280</width>
+                <height>720</height>
+                <texture>bg_backdrop_1920x1080.png</texture>
+            </control>
+            <control type="image">
+                <width>1280</width>
+                <height>720</height>
+                <texture>bg_dock_1920x1080.png</texture>
+            </control>
+            <control type="image" id="202">
+                <visible>false</visible>
+                <width>1280</width>
+                <height>720</height>
+                <texture>bg_list_1920x1080.png</texture>
+            </control>
+            <control type="scrollbar" id="25">
+                <visible>Control.HasFocus(120)</visible>
+                <posx>678</posx>
+                <posy>135</posy>
+                <width>19</width>
+                <height>543</height>
+                <texturesliderbarfocus border="8">track_scroll_15x115.png</texturesliderbarfocus>
+                <textureslidernib>track_scroll_15x115.png</textureslidernib>
+                <textureslidernibfocus>track_scroll_15x115.png</textureslidernibfocus>
+                <texturesliderbackground>track_bar_19x800.png</texturesliderbackground>
+                <orientation>vertical</orientation>
+                <showonepage>true</showonepage>
             </control>
             <control type="wraplist" id="100">
-                <focusposition>2</focusposition>
-                <posx>350</posx>
+                <focusposition>3</focusposition>
+                <posx>200</posx>
                 <posy>25</posy>
-                <width>1030</width>
+                <width>1080</width>
                 <height>150</height>
                 <orientation>horizontal</orientation>
                 <itemlayout width="175">
                     <control type="label">
                         <width>175</width>
-                        <posy>25</posy>
                         <align>center</align>
-                        <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
                         <wrapmultiline>true</wrapmultiline>
@@ -48,12 +70,9 @@ if len(mc.GetWindow(14000).GetList(100).GetItems()) == 0:
                 <focusedlayout width="175">
                     <control type="label">
                         <width>175</width>
-                        <posy>25</posy>
                         <align>center</align>
-                        <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>red</textcolor>
-                        <wrapmultiline>true</wrapmultiline>
                     </control>
                 </focusedlayout>
                 <content type="action">
@@ -75,6 +94,7 @@ else:
 
 mc.HideDialogWait()
 mc.GetWindow(14000).PushState()
+mc.GetWindow(14000).GetControl(202).SetVisible(True)
 mc.GetWindow(14000).GetControl(next_menu).SetVisible(True)
 mc.GetWindow(14000).GetControl(next_menu).SetFocus()
 ]]>
@@ -83,16 +103,15 @@ mc.GetWindow(14000).GetControl(next_menu).SetFocus()
             </control>
             <control type="list" id="110">
                 <visible>false</visible>
-                <posy>100</posy>
-                <posx>50</posx>
-                <width>550</width>
-                <height>600</height>
+                <posx>25</posx>
+                <posy>130</posy>
+                <width>675</width>
+                <height>550</height>
                 <orientation>vertical</orientation>
+                <pagecontrol>25</pagecontrol>
                 <itemlayout height="50">
                     <control type="label">
-                        <font>font26</font>
-                        <posx>0</posx>
-                        <width>550</width>
+                        <posx>15</posx>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
@@ -100,14 +119,17 @@ mc.GetWindow(14000).GetControl(next_menu).SetFocus()
                     </control>
                 </itemlayout>
                 <focusedlayout height="50">
+                    <control type="image">
+                        <height>50</height>
+                        <texture>bg_listFocus_970x100.png</texture>
+                        <aspectratio>keep</aspectratio>
+                    </control>
                     <control type="label">
-                        <font>font26</font>
-                        <width>550</width>
+                        <posx>15</posx>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
-                        <textcolor>red</textcolor>
-                        <scroll>true</scroll>
+                        <textcolor>white</textcolor>
                     </control>
                 </focusedlayout>
                 <content type="action">
@@ -131,16 +153,15 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
             </control>
             <control type="list" id="120">
                 <visible>false</visible>
-                <posy>100</posy>
-                <posx>50</posx>
-                <width>550</width>
-                <height>600</height>
+                <posx>25</posx>
+                <posy>130</posy>
+                <width>654</width>
+                <height>550</height>
                 <orientation>vertical</orientation>
+                <pagecontrol>25</pagecontrol>
                 <itemlayout height="50">
                     <control type="label">
-                        <font>font26</font>
-                        <posx>0</posx>
-                        <width>550</width>
+                        <posx>15</posx>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
@@ -148,14 +169,17 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                     </control>
                 </itemlayout>
                 <focusedlayout height="50">
+                    <control type="image">
+                        <height>50</height>
+                        <texture>bg_listFocus_970x100.png</texture>
+                        <aspectratio>keep</aspectratio>
+                    </control>
                     <control type="label">
-                        <font>font26</font>
-                        <width>550</width>
+                        <posx>15</posx>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
-                        <textcolor>red</textcolor>
-                        <scroll>true</scroll>
+                        <textcolor>white</textcolor>
                     </control>
                 </focusedlayout>
                 <content type="action">
@@ -170,10 +194,10 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
-                <font>sans30b</font>
-                <posx>650</posx>
-                <posy>100</posy>
-                <width>600</width>
+                <font>sans28b</font>
+                <posx>750</posx>
+                <posy>130</posy>
+                <width>500</width>
                 <height>100</height>
                 <align>left</align>
                 <aligny>top</aligny>
@@ -184,9 +208,9 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>650</posx>
-                <posy>175</posy>
-                <width>600</width>
+                <posx>750</posx>
+                <posy>200</posy>
+                <width>500</width>
                 <height>200</height>
                 <align>left</align>
                 <aligny>top</aligny>
@@ -197,9 +221,9 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>650</posx>
-                <posy>250</posy>
-                <width>600</width>
+                <posx>750</posx>
+                <posy>285</posy>
+                <width>500</width>
                 <height>50</height>
                 <align>left</align>
                 <aligny>top</aligny>
@@ -207,15 +231,21 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <background>blue</background>
                 <textcolor>white</textcolor>
             </control>
-            <control type="largeimage">
+            <control type="image">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>650</posx>
-                <posy>325</posy>
-                <width>600</width>
-                <height>400</height>
-                <aspectratio>keep</aspectratio>
-                <bordersize>5</bordersize>
+                <posx>750</posx>
+                <posy>425</posy>
+                <width>428</width>
+                <height>240</height>
                 <texture>$INFO[Container(120).ListItem.Thumb]</texture>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(120)</visible>
+                <posx>750</posx>
+                <posy>425</posy>
+                <width>428</width>
+                <height>240</height>
+                <texture>bg_imgFlare_640x360.png</texture>
             </control>
         </control>
     </controls>
