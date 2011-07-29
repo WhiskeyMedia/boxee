@@ -27,12 +27,13 @@ mc.GetPlayer().Stop()
                 <height>720</height>
                 <texture>bg_backdrop_1920x1080.png</texture>
             </control>
-            <control type="image">
+            <control type="image" id="202">
+                <visible>false</visible>
                 <width>1280</width>
                 <height>720</height>
                 <texture>bg_dock_1920x1080.png</texture>
             </control>
-            <control type="image" id="202">
+            <control type="image" id="203">
                 <visible>false</visible>
                 <width>1280</width>
                 <height>720</height>
@@ -72,7 +73,7 @@ mc.GetPlayer().Stop()
                         <width>175</width>
                         <align>center</align>
                         <label>$INFO[ListItem.Label]</label>
-                        <textcolor>red</textcolor>
+                        <textcolor>FFFF0000</textcolor>
                     </control>
                 </focusedlayout>
                 <content type="action">
@@ -95,6 +96,7 @@ else:
 mc.HideDialogWait()
 mc.GetWindow(14000).PushState()
 mc.GetWindow(14000).GetControl(202).SetVisible(True)
+mc.GetWindow(14000).GetControl(203).SetVisible(True)
 mc.GetWindow(14000).GetControl(next_menu).SetVisible(True)
 mc.GetWindow(14000).GetControl(next_menu).SetFocus()
 ]]>
@@ -105,13 +107,14 @@ mc.GetWindow(14000).GetControl(next_menu).SetFocus()
                 <visible>false</visible>
                 <posx>25</posx>
                 <posy>130</posy>
-                <width>675</width>
+                <width>654</width>
                 <height>550</height>
                 <orientation>vertical</orientation>
                 <pagecontrol>25</pagecontrol>
                 <itemlayout height="50">
                     <control type="label">
-                        <posx>15</posx>
+                        <posx>30</posx>
+                        <width>605</width>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
@@ -120,12 +123,15 @@ mc.GetWindow(14000).GetControl(next_menu).SetFocus()
                 </itemlayout>
                 <focusedlayout height="50">
                     <control type="image">
+                        <posx>10</posx>
+                        <width>640</width>
                         <height>50</height>
                         <texture>bg_listFocus_970x100.png</texture>
                         <aspectratio>keep</aspectratio>
                     </control>
                     <control type="label">
-                        <posx>15</posx>
+                        <posx>30</posx>
+                        <width>605</width>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
@@ -145,6 +151,7 @@ mc.HideDialogWait()
 
 mc.GetWindow(14000).PushState()
 mc.GetWindow(14000).GetControl(110).SetVisible(False)
+mc.GetWindow(14000).GetControl(202).SetVisible(True)
 mc.GetWindow(14000).GetControl(120).SetVisible(True)
 mc.GetWindow(14000).GetControl(120).SetFocus()
 ]]>
@@ -161,7 +168,8 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                 <pagecontrol>25</pagecontrol>
                 <itemlayout height="50">
                     <control type="label">
-                        <posx>15</posx>
+                        <posx>30</posx>
+                        <width>605</width>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
@@ -170,12 +178,15 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                 </itemlayout>
                 <focusedlayout height="50">
                     <control type="image">
+                        <posx>10</posx>
+                        <width>640</width>
                         <height>50</height>
                         <texture>bg_listFocus_970x100.png</texture>
                         <aspectratio>keep</aspectratio>
                     </control>
                     <control type="label">
-                        <posx>15</posx>
+                        <posx>30</posx>
+                        <width>605</width>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
