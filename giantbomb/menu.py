@@ -78,18 +78,21 @@ def get_videos(cat_id):
 
     videos = mc.ListItems()
 
+    border = 'bg_imgFlare_640x360.png'.encode('utf-8')
     for vid in video_data:
         date = vid['publish_date'].encode('utf-8').split(' ')[0].split('-')
         item = mc.ListItem(mc.ListItem.MEDIA_VIDEO_CLIP)
         item.SetLabel(vid['name'].encode('utf-8'))
         item.SetDescription(vid['deck'].encode('utf-8'))
         item.SetThumbnail(vid['image']['super_url'].encode('utf-8'))
-        if int(vid['id']) % 2 == 0:
-            item.SetIcon('bg_imgFlare_640x360.png'.encode('utf-8'))
-        else:
-            item.SetIcon('bg_imgFlare2_640x360.png'.encode('utf-8'))
+        item.SetIcon(border)
         item.SetPath('http://media.giantbomb.com/video/' + vid['url'].replace('.mp4', '_1500.mp4').encode('utf-8'))
         item.SetDate(int(date[0]), int(date[1]), int(date[2]))
         videos.append(item)
+
+        if border == 'bg_imgFlare_640x360.png'.encode('utf-8'):
+            border = 'bg_imgFlare2_640x360.png'.encode('utf-8')
+        else:
+            border = 'bg_imgFlare_640x360.png'.encode('utf-8')
 
     return videos
