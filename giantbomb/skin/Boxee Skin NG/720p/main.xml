@@ -266,7 +266,6 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <width>428</width>
                 <height>240</height>
                 <texture>$INFO[Container(120).ListItem.Thumb]</texture>
-                <bordertexture>bg_imgFlare_640x360.png</bordertexture>
                 <fadetime>500</fadetime>
             </control>
             <control type="image">
@@ -275,7 +274,8 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <posy>425</posy>
                 <width>428</width>
                 <height>240</height>
-                <texture>bg_imgFlare_640x360.png</texture>
+                <texture>$INFO[Container(120).ListItem.ActualIcon]</texture>
+                <fadetime>500</fadetime>
             </control>
         </control>
     </controls>
