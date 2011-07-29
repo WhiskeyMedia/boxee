@@ -175,6 +175,7 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
                     </control>
                 </itemlayout>
                 <focusedlayout height="50">
@@ -192,6 +193,7 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
                     </control>
                 </focusedlayout>
                 <content type="action">
@@ -205,7 +207,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                </content>
             </control>
             <control type="label">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
                 <font>sans28b</font>
                 <posx>750</posx>
                 <posy>130</posy>
@@ -214,12 +216,11 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <align>left</align>
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.Label]</label>
-                <background>blue</background>
                 <textcolor>white</textcolor>
                 <wrapmultiline>true</wrapmultiline>
             </control>
             <control type="label">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
                 <posx>750</posx>
                 <posy>200</posy>
                 <width>500</width>
@@ -227,12 +228,11 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <align>left</align>
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.property(description)]</label>
-                <background>blue</background>
                 <textcolor>white</textcolor>
                 <wrapmultiline>true</wrapmultiline>
             </control>
             <control type="label">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
                 <posx>750</posx>
                 <posy>285</posy>
                 <width>500</width>
@@ -240,77 +240,95 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <align>left</align>
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.Date]</label>
-                <background>blue</background>
                 <textcolor>white</textcolor>
             </control>
             <control type="image">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
+                <visible>!Container(120).IsLoading + !Container(120).IsEmpty</visible>
+                <visible>!Container(120).OnNext + !Container(120).OnPrevious</visible>
                 <posx>810</posx>
                 <posy>365</posy>
                 <width>428</width>
                 <height>240</height>
-                <fadetime>200</fadetime>
                 <texture>$INFO[Container(120).ListItem(3).Thumb]</texture>
+                <animation effect="fade" start="20" end="40" time="300" delay="0" reversable="true">Visible</animation>
             </control>
             <control type="image">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
+                <visible>!Container(120).IsLoading + !Container(120).IsEmpty</visible>
+                <visible>!Container(120).OnNext + !Container(120).OnPrevious</visible>
                 <posx>810</posx>
                 <posy>365</posy>
                 <width>428</width>
                 <height>240</height>
                 <texture>bg_imgFlare_640x360.png</texture>
+                <animation effect="fade" start="20" end="40" time="300" delay="0" reversable="true">Visible</animation>
             </control>
             <control type="image">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
+                <visible>!Container(120).IsLoading + !Container(120).IsEmpty</visible>
+                <visible>!Container(120).OnNext + !Container(120).OnPrevious</visible>
                 <posx>790</posx>
                 <posy>385</posy>
                 <width>428</width>
                 <height>240</height>
-                <fadetime>200</fadetime>
                 <texture>$INFO[Container(120).ListItem(2).Thumb]</texture>
+                <animation effect="fade" start="40" end="60" time="300" delay="0" reversable="true">Visible</animation>
             </control>
             <control type="image">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
+                <visible>!Container(120).IsLoading + !Container(120).IsEmpty</visible>
+                <visible>!Container(120).OnNext + !Container(120).OnPrevious</visible>
                 <posx>790</posx>
                 <posy>385</posy>
                 <width>428</width>
                 <height>240</height>
                 <texture>bg_imgFlare_640x360.png</texture>
+                <animation effect="fade" start="40" end="60" time="300" delay="0" reversable="true">Visible</animation>
             </control>
             <control type="image">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
+                <visible>!Container(120).IsLoading + !Container(120).IsEmpty</visible>
+                <visible>!Container(120).OnNext + !Container(120).OnPrevious</visible>
                 <posx>770</posx>
                 <posy>405</posy>
                 <width>428</width>
                 <height>240</height>
-                <fadetime>200</fadetime>
                 <texture>$INFO[Container(120).ListItem(1).Thumb]</texture>
+                <animation effect="fade" start="60" end="80" time="300" delay="0" reversable="true">Visible</animation>
             </control>
             <control type="image">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.HasFocus(120)</visible>
+                <visible>!Container(120).IsLoading + !Container(120).IsEmpty</visible>
+                <visible>!Container(120).OnNext + !Container(120).OnPrevious</visible>
                 <posx>770</posx>
                 <posy>405</posy>
                 <width>428</width>
                 <height>240</height>
                 <texture>bg_imgFlare_640x360.png</texture>
+                <animation effect="fade" start="60" end="80" time="300" delay="0" reversable="true">Visible</animation>
             </control>
             <control type="image">
-                <visible>Control.IsVisible(120)</visible>
-                <posx>750</posx>
-                <posy>425</posy>
+                <visible>Control.HasFocus(120)</visible>
+                <visible>!Container(120).IsLoading + !Container(120).IsEmpty</visible>
+                <visible>!Container(120).OnNext + !Container(120).OnPrevious</visible>
+                <posx>770</posx>
+                <posy>405</posy>
                 <width>428</width>
                 <height>240</height>
-                <fadetime>200</fadetime>
-                <animation effect="fade" time="100">Container(120).OnNext</animation>
                 <texture>$INFO[Container(120).ListItem.Thumb]</texture>
+                <animation effect="slide" end="-20,20" time="300" reversable="true">Visible</animation>
             </control>
             <control type="image">
-                <visible>Control.IsVisible(120)</visible>
-                <posx>750</posx>
-                <posy>425</posy>
+                <visible>Control.HasFocus(120)</visible>
+                <visible>!Container(120).IsLoading + !Container(120).IsEmpty</visible>
+                <visible>!Container(120).OnNext + !Container(120).OnPrevious</visible>
+                <posx>770</posx>
+                <posy>405</posy>
                 <width>428</width>
                 <height>240</height>
                 <texture>bg_imgFlare_640x360.png</texture>
+                <animation effect="slide" end="-20,20" time="300" reversable="true">Visible</animation>
             </control>
         </control>
     </controls>
