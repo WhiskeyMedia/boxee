@@ -1,6 +1,5 @@
 import mc
 import simplejson
-import urllib2
 
 API_KEY = 'e5529a761ee3394ffbd237269966e9f53a4c7bf3'
 
