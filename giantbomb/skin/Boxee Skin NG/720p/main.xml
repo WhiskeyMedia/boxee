@@ -40,7 +40,7 @@ mc.GetPlayer().Stop()
                 <texture>bg_list_1920x1080.png</texture>
             </control>
             <control type="scrollbar" id="25">
-                <visible>Control.HasFocus(120)</visible>
+                <visible>Control.IsVisible(120)</visible>
                 <posx>678</posx>
                 <posy>135</posy>
                 <width>19</width>
@@ -166,6 +166,7 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                 <height>550</height>
                 <orientation>vertical</orientation>
                 <pagecontrol>25</pagecontrol>
+                <preloaditems>100</preloaditems>
                 <itemlayout height="50">
                     <control type="label">
                         <posx>30</posx>
@@ -204,7 +205,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                </content>
             </control>
             <control type="label">
-                <visible>Control.HasFocus(120)</visible>
+                <visible>Control.IsVisible(120)</visible>
                 <font>sans28b</font>
                 <posx>750</posx>
                 <posy>130</posy>
@@ -218,7 +219,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <wrapmultiline>true</wrapmultiline>
             </control>
             <control type="label">
-                <visible>Control.HasFocus(120)</visible>
+                <visible>Control.IsVisible(120)</visible>
                 <posx>750</posx>
                 <posy>200</posy>
                 <width>500</width>
@@ -231,7 +232,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <wrapmultiline>true</wrapmultiline>
             </control>
             <control type="label">
-                <visible>Control.HasFocus(120)</visible>
+                <visible>Control.IsVisible(120)</visible>
                 <posx>750</posx>
                 <posy>285</posy>
                 <width>500</width>
@@ -243,15 +244,68 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <textcolor>white</textcolor>
             </control>
             <control type="image">
-                <visible>Control.HasFocus(120)</visible>
+                <visible>Control.IsVisible(120)</visible>
+                <posx>810</posx>
+                <posy>365</posy>
+                <width>428</width>
+                <height>240</height>
+                <fadetime>200</fadetime>
+                <texture>$INFO[Container(120).ListItem(3).Thumb]</texture>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(120)</visible>
+                <posx>810</posx>
+                <posy>365</posy>
+                <width>428</width>
+                <height>240</height>
+                <texture>bg_imgFlare_640x360.png</texture>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(120)</visible>
+                <posx>790</posx>
+                <posy>385</posy>
+                <width>428</width>
+                <height>240</height>
+                <fadetime>200</fadetime>
+                <texture>$INFO[Container(120).ListItem(2).Thumb]</texture>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(120)</visible>
+                <posx>790</posx>
+                <posy>385</posy>
+                <width>428</width>
+                <height>240</height>
+                <texture>bg_imgFlare_640x360.png</texture>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(120)</visible>
+                <posx>770</posx>
+                <posy>405</posy>
+                <width>428</width>
+                <height>240</height>
+                <fadetime>200</fadetime>
+                <texture>$INFO[Container(120).ListItem(1).Thumb]</texture>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(120)</visible>
+                <posx>770</posx>
+                <posy>405</posy>
+                <width>428</width>
+                <height>240</height>
+                <texture>bg_imgFlare_640x360.png</texture>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(120)</visible>
                 <posx>750</posx>
                 <posy>425</posy>
                 <width>428</width>
                 <height>240</height>
+                <fadetime>200</fadetime>
+                <animation effect="fade" time="100">Container(120).OnNext</animation>
                 <texture>$INFO[Container(120).ListItem.Thumb]</texture>
             </control>
             <control type="image">
-                <visible>Control.HasFocus(120)</visible>
+                <visible>Control.IsVisible(120)</visible>
                 <posx>750</posx>
                 <posy>425</posy>
                 <width>428</width>
