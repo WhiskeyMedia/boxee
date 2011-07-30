@@ -34,13 +34,13 @@ mc.GetPlayer().Stop()
                 <texture>bg_dock_1920x1080.png</texture>
             </control>
             <control type="image" id="203">
-                <visible>false</visible>
+                <visible>Control.IsVisible(110) | Control.IsVisible(120)</visible>
                 <width>1280</width>
                 <height>720</height>
                 <texture>bg_list_1920x1080.png</texture>
             </control>
             <control type="scrollbar" id="25">
-                <visible>Control.IsVisible(120)</visible>
+                <visible>Control.IsVisible(110) | Control.IsVisible(120)</visible>
                 <posx>678</posx>
                 <posy>135</posy>
                 <width>19</width>
@@ -106,7 +106,6 @@ else:
     next_menu = 120
 
 mc.GetWindow(14000).PushState()
-mc.GetWindow(14000).GetControl(203).SetVisible(True)
 mc.GetWindow(14000).GetControl(next_menu).SetVisible(True)
 mc.HideDialogWait()
 mc.GetWindow(14000).GetControl(next_menu).SetFocus()
