@@ -223,7 +223,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <posx>750</posx>
                 <posy>150</posy>
                 <width>500</width>
-                <height>100</height>
+                <height>70</height>
                 <align>left</align>
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.Label]</label>
@@ -236,7 +236,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <posx>750</posx>
                 <posy>220</posy>
                 <width>500</width>
-                <height>200</height>
+                <height>115</height>
                 <align>left</align>
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.property(description)]</label>
