@@ -28,7 +28,7 @@ mc.GetPlayer().Stop()
                 <texture>bg_backdrop_1920x1080.png</texture>
             </control>
             <control type="image" id="202">
-                <visible>false</visible>
+                <visible>Control.IsVisible(120)</visible>
                 <width>1280</width>
                 <height>720</height>
                 <texture>bg_dock_1920x1080.png</texture>
@@ -105,11 +105,10 @@ else:
     mc.GetWindow(14000).GetList(120).SetItems(videos)
     next_menu = 120
 
-mc.HideDialogWait()
 mc.GetWindow(14000).PushState()
-mc.GetWindow(14000).GetControl(202).SetVisible(True)
 mc.GetWindow(14000).GetControl(203).SetVisible(True)
 mc.GetWindow(14000).GetControl(next_menu).SetVisible(True)
+mc.HideDialogWait()
 mc.GetWindow(14000).GetControl(next_menu).SetFocus()
 ]]>
                     </onclick>
@@ -161,12 +160,11 @@ erun_id = mc.GetFocusedItem(14000, 110).GetProperty('id')
 mc.ShowDialogWait()
 videos = menu.get_videos(erun_id)
 mc.GetWindow(14000).GetList(120).SetItems(videos)
-mc.HideDialogWait()
 
 mc.GetWindow(14000).PushState()
 mc.GetWindow(14000).GetControl(110).SetVisible(False)
-mc.GetWindow(14000).GetControl(202).SetVisible(True)
 mc.GetWindow(14000).GetControl(120).SetVisible(True)
+mc.HideDialogWait()
 mc.GetWindow(14000).GetControl(120).SetFocus()
 ]]>
                     </onclick>
