@@ -219,10 +219,10 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
-                <font>sans28b</font>
-                <posx>750</posx>
+                <font>sans30b</font>
+                <posx>735</posx>
                 <posy>150</posy>
-                <width>500</width>
+                <width>512</width>
                 <height>70</height>
                 <align>left</align>
                 <aligny>top</aligny>
@@ -233,10 +233,10 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>750</posx>
-                <posy>220</posy>
-                <width>500</width>
-                <height>115</height>
+                <posx>735</posx>
+                <posy>225</posy>
+                <width>512</width>
+                <height>85</height>
                 <align>left</align>
                 <aligny>top</aligny>
                 <label>$INFO[Container(120).ListItem.property(description)]</label>
@@ -246,9 +246,9 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>750</posx>
-                <posy>305</posy>
-                <width>500</width>
+                <posx>735</posx>
+                <posy>310</posy>
+                <width>512</width>
                 <height>50</height>
                 <align>left</align>
                 <aligny>top</aligny>
@@ -258,20 +258,30 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
             </control>
             <control type="image" id="401">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>750</posx>
-                <posy>425</posy>
-                <width>428</width>
-                <height>240</height>
+                <posx>735</posx>
+                <posy>375</posy>
+                <width>512</width>
+                <height>288</height>
                 <texture>$INFO[Container(120).ListItem.Thumb]</texture>
                 <fadetime>500</fadetime>
             </control>
             <control type="image">
                 <visible>Control.HasFocus(120)</visible>
-                <posx>750</posx>
-                <posy>425</posy>
-                <width>428</width>
-                <height>240</height>
+                <posx>735</posx>
+                <posy>375</posy>
+                <width>512</width>
+                <height>288</height>
                 <texture>$INFO[Container(120).ListItem.ActualIcon]</texture>
+                <fadetime>500</fadetime>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(120)</visible>
+                <posx>735</posx>
+                <posy>663</posy>
+                <width>512</width>
+                <height>288</height>
+                <texture flipy="true" diffuse="mirror_diffuse_512x288.png">$INFO[Container(120).ListItem.Thumb]</texture>
+                <aspectratio scalediffuse="false"></aspectratio>
                 <fadetime>500</fadetime>
             </control>
         </control>
