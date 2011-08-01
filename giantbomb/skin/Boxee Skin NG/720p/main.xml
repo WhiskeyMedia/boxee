@@ -41,14 +41,14 @@ mc.GetPlayer().Stop()
             </control>
             <control type="scrollbar" id="25">
                 <visible>Control.IsVisible(110) | Control.IsVisible(120)</visible>
-                <posx>678</posx>
-                <posy>135</posy>
-                <width>19</width>
-                <height>543</height>
-                <texturesliderbarfocus border="8">track_scroll_15x115.png</texturesliderbarfocus>
-                <textureslidernib>track_scroll_15x115.png</textureslidernib>
-                <textureslidernibfocus>track_scroll_15x115.png</textureslidernibfocus>
-                <texturesliderbackground>track_bar_19x800.png</texturesliderbackground>
+                <posx>682</posx>
+                <posy>140</posy>
+                <width>12</width>
+                <height>534</height>
+                <texturesliderbarfocus border="8">track_scroll_12x534.png</texturesliderbarfocus>
+                <textureslidernib>track_scroll_10x76.png</textureslidernib>
+                <textureslidernibfocus>track_scroll_10x76.png</textureslidernibfocus>
+                <texturesliderbackground>track_bar_12x534.png</texturesliderbackground>
                 <orientation>vertical</orientation>
                 <showonepage>true</showonepage>
             </control>
@@ -175,7 +175,7 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                 <visible>false</visible>
                 <posx>25</posx>
                 <posy>130</posy>
-                <width>654</width>
+                <width>660</width>
                 <height>550</height>
                 <orientation>vertical</orientation>
                 <pagecontrol>25</pagecontrol>
@@ -183,7 +183,7 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                 <itemlayout height="50">
                     <control type="label">
                         <posx>30</posx>
-                        <width>605</width>
+                        <width>610</width>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
@@ -194,14 +194,14 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                 <focusedlayout height="50">
                     <control type="image">
                         <posx>10</posx>
-                        <width>640</width>
+                        <width>645</width>
                         <height>50</height>
                         <texture>bg_listFocus_970x100.png</texture>
                         <aspectratio>keep</aspectratio>
                     </control>
                     <control type="label">
                         <posx>30</posx>
-                        <width>605</width>
+                        <width>610</width>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
