@@ -78,7 +78,6 @@ def get_videos(cat_id):
 
     videos = mc.ListItems()
 
-    media_path = mc.GetApp().GetAppMediaDir()
     border = 'bg_imgFlare_640x360.png'.encode('utf-8')
     for vid in video_data:
         date = vid['publish_date'].encode('utf-8').split(' ')[0].split('-')
