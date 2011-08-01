@@ -119,14 +119,15 @@ mc.GetWindow(14000).GetControl(next_menu).SetFocus()
                 <visible>false</visible>
                 <posx>25</posx>
                 <posy>130</posy>
-                <width>654</width>
+                <width>660</width>
                 <height>550</height>
                 <orientation>vertical</orientation>
                 <pagecontrol>25</pagecontrol>
+                <preloaditems>100</preloaditems>
                 <itemlayout height="50">
                     <control type="label">
                         <posx>30</posx>
-                        <width>605</width>
+                        <width>610</width>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
@@ -137,14 +138,14 @@ mc.GetWindow(14000).GetControl(next_menu).SetFocus()
                 <focusedlayout height="50">
                     <control type="image">
                         <posx>10</posx>
-                        <width>640</width>
+                        <width>645</width>
                         <height>50</height>
                         <texture>bg_listFocus_970x100.png</texture>
                         <aspectratio>keep</aspectratio>
                     </control>
                     <control type="label">
                         <posx>30</posx>
-                        <width>605</width>
+                        <width>610</width>
                         <height>50</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
