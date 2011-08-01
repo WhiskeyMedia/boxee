@@ -53,7 +53,7 @@ mc.GetPlayer().Stop()
                 <showonepage>true</showonepage>
             </control>
             <control type="wraplist" id="100">
-                <focusposition>3</focusposition>
+                <focusposition>2</focusposition>
                 <posx>200</posx>
                 <posy>0</posy>
                 <width>1080</width>
@@ -61,6 +61,7 @@ mc.GetPlayer().Stop()
                 <orientation>horizontal</orientation>
                 <itemlayout width="180">
                     <control type="label">
+                        <posx>90</posx>
                         <posy>25</posy>
                         <width>180</width>
                         <height>150</height>
@@ -74,11 +75,12 @@ mc.GetPlayer().Stop()
                     <control type="image">
                         <width>180</width>
                         <height>130</height>
-                        <posx>-90</posx>
                         <posy>-55</posy>
+                        <align>center</align>
                         <texture>bg_listFocus_970x100.png</texture>
                     </control>
                     <control type="label">
+                        <posx>90</posx>
                         <posy>25</posy>
                         <width>180</width>
                         <height>150</height>
@@ -271,7 +273,7 @@ mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
                 <posy>375</posy>
                 <width>512</width>
                 <height>288</height>
-                <texture>$INFO[Container(120).ListItem.ActualIcon]</texture>
+                <texture>$INFO[Container(120).ListItem.property(image0)]</texture>
                 <fadetime>500</fadetime>
             </control>
             <control type="image">
