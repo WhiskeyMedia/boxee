@@ -61,8 +61,7 @@ def get_eruns():
     return eruns
 
 def get_api_key(access_code):
-    last_access_code = mc.GetApp().GetLocalConfig().GetValue('access_code', access_code)
-    if len(access_code) == 6 and access_code != last_access_code:
+    if access_code and len(access_code) == 6:
         try:
             response = mc.Http().Get(API_PATH + '/?validate=' + access_code + '&format=json')
             data = simplejson.loads(response)
@@ -79,7 +78,6 @@ def get_videos(cat_id):
         api_key = get_api_key(access_code)
         if api_key:
             mc.GetApp().GetLocalConfig().SetValue('api_key', api_key)
-            mc.GetApp().GetLocalConfig().SetValue('access_code', access_code)
             global API_KEY
             API_KEY = data['api_key']
     elif cat_id == 'latest':
