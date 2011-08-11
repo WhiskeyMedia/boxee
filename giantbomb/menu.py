@@ -32,6 +32,12 @@ def get_categories():
     item.SetProperty('id', 'search'.encode('utf-8'))
     categories.append(item)
 
+    # Register
+    item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
+    item.SetLabel('Register'.encode('utf-8'))
+    item.SetProperty('id', 'register'.encode('utf-8'))
+    categories.append(item)
+
     return categories
 
 def get_eruns():
@@ -54,8 +60,29 @@ def get_eruns():
 
     return eruns
 
+def get_api_key(access_code):
+    last_access_code = mc.GetApp().GetLocalConfig().GetValue('access_code', access_code)
+    if len(access_code) == 6 and access_code != last_access_code:
+        try:
+            response = mc.Http().Get(API_PATH + '/?validate=' + access_code + '&format=json')
+            data = simplejson.loads(response)
+            api_key = data['api_key']
+            return api_key
+        except:
+            return None
+    else:
+        return None
+
 def get_videos(cat_id):
-    if cat_id == 'latest':
+    if cat_id == 'register':
+        access_code = mc.ShowDialogKeyboard("Access Code", "", False)
+        api_key = get_api_key(access_code)
+        if api_key:
+            mc.GetApp().GetLocalConfig().SetValue('api_key', api_key)
+            mc.GetApp().GetLocalConfig().SetValue('access_code', access_code)
+            global API_KEY
+            API_KEY = data['api_key']
+    elif cat_id == 'latest':
         response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&sort=-publish_date&format=json')
     elif cat_id == 'search':
         query = mc.ShowDialogKeyboard("Search", "", False).replace(' ', '%20')
