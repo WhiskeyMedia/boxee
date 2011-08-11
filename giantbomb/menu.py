@@ -1,6 +1,7 @@
 import mc
 import simplejson
 
+API_PATH = 'http://api.giantbomb.com'
 API_KEY = 'e5529a761ee3394ffbd237269966e9f53a4c7bf3'
 
 lf_category = 0
@@ -8,7 +9,7 @@ lf_erun = 0
 lf_video = 0
 
 def get_categories():
-    response = mc.Http().Get('http://api.giantbomb.com/video_types/?api_key=' + API_KEY + '&format=json')
+    response = mc.Http().Get(API_PATH + '/video_types/?api_key=' + API_KEY + '&format=json')
     category_data = simplejson.loads(response)['results']
 
     categories = mc.ListItems()
@@ -25,6 +26,7 @@ def get_categories():
         item.SetProperty('id', str(cat['id']).encode('utf-8'))
         categories.append(item)
 
+    # Search
     item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
     item.SetLabel('Search'.encode('utf-8'))
     item.SetProperty('id', 'search'.encode('utf-8'))
@@ -54,23 +56,23 @@ def get_eruns():
 
 def get_videos(cat_id):
     if cat_id == 'latest':
-        response = mc.Http().Get('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&sort=-publish_date&format=json')
+        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&sort=-publish_date&format=json')
     elif cat_id == 'search':
         query = mc.ShowDialogKeyboard("Search", "", False).replace(' ', '%20')
-        response = mc.Http().Get('http://api.giantbomb.com/search/?api_key=' + API_KEY + '&resources=video&query=' + query + '&format=json')
+        response = mc.Http().Get(API_PATH + '/search/?api_key=' + API_KEY + '&resources=video&query=' + query + '&format=json')
     elif cat_id == '5-DP':
-        response = mc.Http().Get('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&video_type=5&offset=161&format=json')
+        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=161&format=json')
     elif cat_id == '5-P4':
-        response = mc.Http().Get('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&video_type=5&format=json')
+        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&format=json')
     elif cat_id == '5-MO':
-        response = mc.Http().Get('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&video_type=5&offset=105&limit=21&format=json')
+        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=105&limit=21&format=json')
     else:
-        response = mc.Http().Get('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&video_type=' + cat_id + '&sort=-publish_date&format=json')
+        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=' + cat_id + '&sort=-publish_date&format=json')
 
     video_data = simplejson.loads(response)['results']
 
     if cat_id == '5-P4':
-        response = mc.Http().Get('http://api.giantbomb.com/videos/?api_key=' + API_KEY + '&video_type=5&offset=100&limit=61&format=json')
+        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=100&limit=61&format=json')
         video_data += simplejson.loads(response)['results']
         video_data = [video for video in video_data if not video['name'].startswith('The Matrix Online')]
     elif cat_id == '5-MO':
@@ -86,7 +88,10 @@ def get_videos(cat_id):
         item.SetDescription(vid['deck'].encode('utf-8'))
         item.SetThumbnail(vid['image']['super_url'].encode('utf-8'))
         item.SetImage(0, border)
-        item.SetPath('http://media.giantbomb.com/video/' + vid['url'].replace('.mp4', '_1500.mp4').encode('utf-8'))
+        if 'hd_url' in vid:
+            item.SetPath(vid['hd_url'] + '&api_key=' + API_KEY).encode('utf-8')
+        else:
+            item.SetPath(vid['high_url']).encode('utf-8')
         item.SetDate(int(date[0]), int(date[1]), int(date[2]))
         videos.append(item)
 
