@@ -75,7 +75,7 @@ def get_api_key(access_code):
 
 def get_videos(cat_id):
     if cat_id == 'register':
-        access_code = mc.ShowDialogKeyboard("Access Code", "", False)
+        access_code = mc.ShowDialogKeyboard("Access Code", "", False).upper()
         api_key = get_api_key(access_code)
         if api_key:
             mc.GetApp().GetLocalConfig().SetValue('api_key', api_key)
