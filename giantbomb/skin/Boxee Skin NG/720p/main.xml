@@ -96,21 +96,25 @@ mc.GetPlayer().Stop()
 menu.lf_category = mc.GetWindow(14000).GetList(100).GetFocusedItem()
 
 cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
-mc.ShowDialogWait()
 
-if cat_id == '5':
-    eruns = menu.get_eruns()
-    mc.GetWindow(14000).GetList(110).SetItems(eruns)
-    next_menu = 110
+if cat_id == 'live':
+    mc.GetPlayer().Play(mc.GetFocusedItem(14000, 100))
 else:
-    videos = menu.get_videos(cat_id)
-    mc.GetWindow(14000).GetList(120).SetItems(videos)
-    next_menu = 120
+    mc.ShowDialogWait()
 
-mc.GetWindow(14000).PushState()
-mc.GetWindow(14000).GetControl(next_menu).SetVisible(True)
-mc.HideDialogWait()
-mc.GetWindow(14000).GetControl(next_menu).SetFocus()
+    if cat_id == '5':
+        eruns = menu.get_eruns()
+        mc.GetWindow(14000).GetList(110).SetItems(eruns)
+        next_menu = 110
+    else:
+        videos = menu.get_videos(cat_id)
+        mc.GetWindow(14000).GetList(120).SetItems(videos)
+        next_menu = 120
+
+    mc.GetWindow(14000).PushState()
+    mc.GetWindow(14000).GetControl(next_menu).SetVisible(True)
+    mc.HideDialogWait()
+    mc.GetWindow(14000).GetControl(next_menu).SetFocus()
 ]]>
                     </onclick>
                 </content>
