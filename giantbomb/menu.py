@@ -14,6 +14,9 @@ def get_categories():
     response = mc.Http().Get('http://api.justin.tv/api/stream/list.json?channel=whiskeymedia')
     live_data = simplejson.loads(response)
 
+    response = mc.Http().Get('http://api.justin.tv/api/stream/list.json?channel=giantbomb')
+    live_data += simplejson.loads(response)
+
     for stream in live_data:
         item = mc.ListItem(mc.ListItem.MEDIA_VIDEO_CLIP)
         item.SetLabel('LIVE: ' + stream['channel']['title'].encode('utf-8'))
