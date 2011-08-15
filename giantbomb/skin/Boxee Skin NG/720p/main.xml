@@ -101,6 +101,8 @@ mc.ShowDialogWait()
 if cat_id == 'live':
     mc.GetPlayer().Play(mc.GetFocusedItem(14000, 100))
 else:
+    mc.ShowDialogWait()
+
     if cat_id == '5':
         eruns = menu.get_eruns()
         mc.GetWindow(14000).GetList(110).SetItems(eruns)
