@@ -8,12 +8,27 @@ lf_erun = 0
 lf_video = 0
 
 def get_categories():
+    categories = mc.ListItems()
+
+    response = mc.Http().Get('http://api.justin.tv/api/stream/list.json?channel=whiskeymedia')
+    live_data = simplejson.loads(response)
+
+    response = mc.Http().Get('http://api.justin.tv/api/stream/list.json?channel=giantbomb')
+    live_data += simplejson.loads(response)
+
+    for stream in live_data:
+        item = mc.ListItem(mc.ListItem.MEDIA_VIDEO_CLIP)
+        item.SetLabel('LIVE: ' + stream['channel']['title'].encode('utf-8'))
+        item.SetProperty('id', 'live'.encode('utf-8'))
+        item.SetDescription(stream['channel']['status'].encode('utf-8'))
+        item.SetThumbnail(stream['channel']['image_url_huge'].encode('utf-8'))
+        item.SetPath(stream['channel']['channel_url'].encode('utf-8'))
+        categories.append(item)
+
     response = mc.Http().Get('http://api.giantbomb.com/video_types/?api_key=' + API_KEY + '&format=json')
     category_data = simplejson.loads(response)['results']
 
-    categories = mc.ListItems()
-
-    # Latest category
+    # Latest
     item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
     item.SetLabel('Latest'.encode('utf-8'))
     item.SetProperty('id', 'latest'.encode('utf-8'))
@@ -25,6 +40,7 @@ def get_categories():
         item.SetProperty('id', str(cat['id']).encode('utf-8'))
         categories.append(item)
 
+    # Search
     item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
     item.SetLabel('Search'.encode('utf-8'))
     item.SetProperty('id', 'search'.encode('utf-8'))
