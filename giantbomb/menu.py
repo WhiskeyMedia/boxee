@@ -47,10 +47,10 @@ def get_categories():
     item.SetProperty('id', 'search'.encode('utf-8'))
     categories.append(item)
 
-    # Register
+    # Link Account
     item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
-    item.SetLabel('Register'.encode('utf-8'))
-    item.SetProperty('id', 'register'.encode('utf-8'))
+    item.SetLabel('Link Account'.encode('utf-8'))
+    item.SetProperty('id', 'link'.encode('utf-8'))
     categories.append(item)
 
     return categories
@@ -87,15 +87,21 @@ def get_api_key(link_code):
     else:
         return None
 
+def link_account():
+    mc.ShowDialogOk("Let's do this.", "To link your account, visit www.giantbomb.com/boxee to get a link code.\n\nEnter this link code on the next screen.")
+
+    link_code = mc.ShowDialogKeyboard("Enter your link code.", "", False).upper()
+    new_api_key = get_api_key(link_code)
+    if new_api_key:
+        mc.GetApp().GetLocalConfig().SetValue('api_key', new_api_key)
+        global API_KEY
+        API_KEY = new_api_key
+        return True
+    else:
+        return False
+
 def get_videos(cat_id):
-    if cat_id == 'register':
-        link_code = mc.ShowDialogKeyboard("Access Code", "", False).upper()
-        api_key = get_api_key(link_code)
-        if api_key:
-            mc.GetApp().GetLocalConfig().SetValue('api_key', api_key)
-            global API_KEY
-            API_KEY = data['api_key']
-    elif cat_id == 'latest':
+    if cat_id == 'latest':
         response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&sort=-publish_date&format=json')
     elif cat_id == 'search':
         query = mc.ShowDialogKeyboard("Search", "", False).replace(' ', '%20')

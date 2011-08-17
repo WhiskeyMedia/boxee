@@ -99,6 +99,13 @@ cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
 
 if cat_id == 'live':
     mc.GetPlayer().Play(mc.GetFocusedItem(14000, 100))
+
+elif cat_id == 'link':
+    if menu.link_account():
+        mc.ShowDialogOk("Success!", "Your account is now linked! If you are a premium member, you should now have premium privileges.")
+    else:
+        mc.ShowDialogOk("We're really sorry, but...", "We could not link your account. Make sure the code you entered is correct and try again.")
+
 else:
     mc.ShowDialogWait()
 
