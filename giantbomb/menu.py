@@ -1,8 +1,9 @@
 import mc
 import simplejson
 
-API_PATH = 'http://api.giantbomb.com'
-API_KEY = 'e5529a761ee3394ffbd237269966e9f53a4c7bf3'
+API_PATH = 'http://localhost:8000'
+#API_KEY = 'e5529a761ee3394ffbd237269966e9f53a4c7bf3' # Default API key
+API_KEY = '3353202b4c9af87523cab1184e471fd1c5be4def'
 
 lf_category = 0
 lf_erun = 0
@@ -11,19 +12,17 @@ lf_video = 0
 def get_categories():
     categories = mc.ListItems()
 
-    response = mc.Http().Get('http://api.justin.tv/api/stream/list.json?channel=whiskeymedia')
-    live_data = simplejson.loads(response)
+    # Live streams
+    response = mc.Http().Get(API_PATH + '/chats/?api_key=' + API_KEY + '&format=json')
+    chat_data = simplejson.loads(response)['results']
 
-    response = mc.Http().Get('http://api.justin.tv/api/stream/list.json?channel=giantbomb')
-    live_data += simplejson.loads(response)
-
-    for stream in live_data:
+    for chat in chat_data:
         item = mc.ListItem(mc.ListItem.MEDIA_VIDEO_CLIP)
-        item.SetLabel('LIVE: ' + stream['channel']['title'].encode('utf-8'))
+        item.SetLabel('LIVE: ' + chat['title'].encode('utf-8'))
         item.SetProperty('id', 'live'.encode('utf-8'))
-        item.SetDescription(stream['channel']['status'].encode('utf-8'))
-        item.SetThumbnail(stream['channel']['image_url_huge'].encode('utf-8'))
-        item.SetPath(stream['channel']['channel_url'].encode('utf-8'))
+        item.SetDescription(chat['deck'].encode('utf-8'))
+        item.SetThumbnail(chat['image']['super_url'].encode('utf-8'))
+        item.SetPath('http://www.justin.tv/' + chat['channel_name'].encode('utf-8'))
         categories.append(item)
 
     response = mc.Http().Get(API_PATH + '/video_types/?api_key=' + API_KEY + '&format=json')
