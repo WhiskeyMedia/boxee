@@ -1,5 +1,6 @@
 import mc
 import simplejson
+import urllib
 
 API_PATH = 'http://localhost:8000'
 #API_KEY = 'e5529a761ee3394ffbd237269966e9f53a4c7bf3' # Default API key
@@ -17,12 +18,22 @@ def get_categories():
     chat_data = simplejson.loads(response)['results']
 
     for chat in chat_data:
+        # src_url = urllib.quote('http://www.justin.tv/widgets/live_embed_player.swf?channel=' + chat['channel_name'] + '&auto_play=true&start_volume=25')
+        # if chat['password']:
+        #     src_url += '&publisherGuard=' + chat['password']
+        # bx_jsactions_url = urllib.quote('http://localhost:8001/media/chat/js/boxee.js')
+        # url = 'flash://www.justin.tv/src=' + src_url + '&bx-jsactions=' + bx_jsactions_url
+
+        url = 'http://www.justin.tv/widgets/live_embed_player.swf?channel=' + chat['channel_name'] + '&auto_play=true&start_volume=25'
+        if chat['password']:
+            url += '&publisherGuard=' + chat['password']
+
         item = mc.ListItem(mc.ListItem.MEDIA_VIDEO_CLIP)
         item.SetLabel('LIVE: ' + chat['title'].encode('utf-8'))
         item.SetProperty('id', 'live'.encode('utf-8'))
         item.SetDescription(chat['deck'].encode('utf-8'))
         item.SetThumbnail(chat['image']['super_url'].encode('utf-8'))
-        item.SetPath('http://www.justin.tv/' + chat['channel_name'].encode('utf-8'))
+        item.SetPath(url.encode('utf-8'))
         categories.append(item)
 
     response = mc.Http().Get(API_PATH + '/video_types/?api_key=' + API_KEY + '&format=json')
@@ -133,10 +144,13 @@ def get_videos(cat_id):
         item.SetDescription(vid['deck'].encode('utf-8'))
         item.SetThumbnail(vid['image']['super_url'].encode('utf-8'))
         item.SetImage(0, border)
+
         if 'hd_url' in vid:
-            item.SetPath(vid['hd_url'] + '&api_key=' + API_KEY).encode('utf-8')
+            url = vid['hd_url'] + '&api_key=' + API_KEY
         else:
-            item.SetPath(vid['high_url']).encode('utf-8')
+            url = vid['high_url']
+        item.SetPath(url.encode('utf-8'))
+
         item.SetDate(int(date[0]), int(date[1]), int(date[2]))
         videos.append(item)
 
