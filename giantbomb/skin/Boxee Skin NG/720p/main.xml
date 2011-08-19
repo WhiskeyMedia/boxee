@@ -11,8 +11,6 @@ import menu
 mc.GetWindow(14000).GetList(100).SetFocusedItem(menu.lf_category)
 mc.GetWindow(14000).GetList(110).SetFocusedItem(menu.lf_erun)
 mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
-
-mc.GetPlayer().Stop()
 ]]>
     </onload>
     <controls>
@@ -226,7 +224,7 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
 <![CDATA[
 menu.lf_video = mc.GetWindow(14000).GetList(120).GetFocusedItem()
 
-mc.GetPlayer().Play(mc.GetFocusedItem(14000, 120))
+mc.GetPlayer().PlayWithActionMenu(mc.GetFocusedItem(14000, 120))
 ]]>
                     </onclick>
                </content>
