@@ -8,9 +8,8 @@
 <![CDATA[
 import menu
 
-mc.GetWindow(14000).GetList(100).SetFocusedItem(menu.lf_category)
-mc.GetWindow(14000).GetList(110).SetFocusedItem(menu.lf_erun)
-mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
+mc.GetActiveWindow().GetList(100).SetFocusedItem(menu.lf_category)
+mc.GetActiveWindow().GetList(120).SetFocusedItem(menu.lf_video)
 ]]>
     </onload>
     <controls>
@@ -32,13 +31,13 @@ mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
                 <texture>bg_dock_1920x1080.png</texture>
             </control>
             <control type="image" id="203">
-                <visible>Control.IsVisible(110) | Control.IsVisible(120)</visible>
+                <visible>Control.IsVisible(120)</visible>
                 <width>1280</width>
                 <height>720</height>
                 <texture>bg_list_1920x1080.png</texture>
             </control>
             <control type="scrollbar" id="25">
-                <visible>Control.IsVisible(110) | Control.IsVisible(120)</visible>
+                <visible>Control.IsVisible(120)</visible>
                 <posx>682</posx>
                 <posy>140</posy>
                 <width>12</width>
@@ -91,7 +90,9 @@ mc.GetWindow(14000).GetList(120).SetFocusedItem(menu.lf_video)
                 <content type="action">
                     <onclick lang="python">
 <![CDATA[
-menu.lf_category = mc.GetWindow(14000).GetList(100).GetFocusedItem()
+mc.GetActiveWindow().ClearStateStack(True)
+mc.GetActiveWindow().PushState()
+menu.lf_category = mc.GetActiveWindow().GetList(100).GetFocusedItem()
 
 cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
 mc.ShowDialogWait()
@@ -102,81 +103,34 @@ else:
     mc.ShowDialogWait()
 
     if cat_id == '5':
-        eruns = menu.get_eruns()
-        mc.GetWindow(14000).GetList(110).SetItems(eruns)
-        next_menu = 110
+        items = menu.get_eruns()
     else:
-        videos = menu.get_videos(cat_id)
-        mc.GetWindow(14000).GetList(120).SetItems(videos)
-        next_menu = 120
+        items = menu.get_videos(cat_id)
 
-    mc.GetWindow(14000).PushState()
-    mc.GetWindow(14000).GetControl(next_menu).SetVisible(True)
+    mc.GetActiveWindow().GetList(120).SetItems(items)
+    mc.GetActiveWindow().GetControl(120).SetVisible(True)
     mc.HideDialogWait()
-    mc.GetWindow(14000).GetControl(next_menu).SetFocus()
+    mc.GetActiveWindow().GetControl(120).SetFocus()
 ]]>
                     </onclick>
                 </content>
             </control>
-            <control type="list" id="110">
-                <visible>false</visible>
-                <posx>25</posx>
-                <posy>130</posy>
-                <width>660</width>
-                <height>550</height>
-                <orientation>vertical</orientation>
-                <pagecontrol>25</pagecontrol>
-                <preloaditems>100</preloaditems>
-                <itemlayout height="50">
-                    <control type="label">
-                        <posx>30</posx>
-                        <width>605</width>
-                        <height>50</height>
-                        <aligny>center</aligny>
-                        <label>$INFO[ListItem.Label]</label>
-                        <textcolor>white</textcolor>
-                        <shadowcolor>AA000000</shadowcolor>
-                    </control>
-                </itemlayout>
-                <focusedlayout height="50">
-                    <control type="image">
-                        <posx>10</posx>
-                        <width>645</width>
-                        <height>50</height>
-                        <texture>bg_listFocus_970x100.png</texture>
-                        <aspectratio>keep</aspectratio>
-                    </control>
-                    <control type="label">
-                        <posx>30</posx>
-                        <width>605</width>
-                        <height>50</height>
-                        <aligny>center</aligny>
-                        <label>$INFO[ListItem.Label]</label>
-                        <textcolor>white</textcolor>
-                        <shadowcolor>AA000000</shadowcolor>
-                    </control>
-                </focusedlayout>
-                <content type="action">
-                    <onclick lang="python">
-<![CDATA[
-menu.lf_erun = mc.GetWindow(14000).GetList(110).GetFocusedItem()
 
-erun_id = mc.GetFocusedItem(14000, 110).GetProperty('id')
-mc.ShowDialogWait()
-videos = menu.get_videos(erun_id)
-mc.GetWindow(14000).GetList(120).SetItems(videos)
 
-mc.GetWindow(14000).PushState()
-mc.GetWindow(14000).GetControl(110).SetVisible(False)
-mc.GetWindow(14000).GetControl(120).SetVisible(True)
-mc.HideDialogWait()
-mc.GetWindow(14000).GetControl(120).SetFocus()
-]]>
-                    </onclick>
-               </content>
-            </control>
             <control type="list" id="120">
                 <visible>false</visible>
+                <onleft lang="python">
+<![CDATA[
+mc.GetActiveWindow().PopState()
+mc.GetActiveWindow().GetList(100).SetFocusedItem(menu.lf_category-1)
+]]>
+                </onleft>
+                <onright lang="python">
+<![CDATA[
+mc.GetActiveWindow().PopState()
+mc.GetActiveWindow().GetList(100).SetFocusedItem(menu.lf_category+1)
+]]>
+                </onright>
                 <posx>25</posx>
                 <posy>130</posy>
                 <width>660</width>
@@ -216,12 +170,24 @@ mc.GetWindow(14000).GetControl(120).SetFocus()
                 <content type="action">
                     <onclick lang="python">
 <![CDATA[
-menu.lf_video = mc.GetWindow(14000).GetList(120).GetFocusedItem()
+menu.lf_video = mc.GetActiveWindow().GetList(120).GetFocusedItem()
+id = mc.GetFocusedItem(14000, 120).GetProperty('id')
 
-mc.GetPlayer().PlayWithActionMenu(mc.GetFocusedItem(14000, 120))
+if id == '5-DP' or id == '5-P4' or id == '5-MO':
+    mc.GetActiveWindow().PushState()
+
+    mc.ShowDialogWait()
+    videos = menu.get_videos(id)
+    mc.GetActiveWindow().GetList(120).SetItems(videos)
+
+    mc.HideDialogWait()
+    mc.GetActiveWindow().GetControl(120).SetFocus()
+
+else:
+    mc.GetPlayer().PlayWithActionMenu(mc.GetFocusedItem(14000, 120))
 ]]>
                     </onclick>
-               </content>
+                </content>
             </control>
             <control type="label">
                 <visible>Control.HasFocus(120)</visible>
