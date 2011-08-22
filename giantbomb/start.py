@@ -2,7 +2,6 @@ import mc
 import menu
 
 menu.lf_category = 0
-menu.lf_erun = 0
 menu.lf_video = 0
 
 mc.ActivateWindow(14000)
