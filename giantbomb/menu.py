@@ -138,20 +138,21 @@ def get_videos(cat_id):
 
     border = 'bg_imgFlare_640x360.png'.encode('utf-8')
     for vid in video_data:
+        if 'hd_url' in vid:
+            url = vid['hd_url'] + '&api_key=' + API_KEY
+        else:
+            url = vid['high_url']
         date = vid['publish_date'].encode('utf-8').split(' ')[0].split('-')
+        #duration = vid['length_seconds']
+
         item = mc.ListItem(mc.ListItem.MEDIA_VIDEO_CLIP)
         item.SetLabel(vid['name'].encode('utf-8'))
         item.SetDescription(vid['deck'].encode('utf-8'))
         item.SetThumbnail(vid['image']['super_url'].encode('utf-8'))
         item.SetImage(0, border)
-
-        if 'hd_url' in vid:
-            url = vid['hd_url'] + '&api_key=' + API_KEY
-        else:
-            url = vid['high_url']
         item.SetPath(url.encode('utf-8'))
-
         item.SetDate(int(date[0]), int(date[1]), int(date[2]))
+        #item.SetDuration(int(duration).encode('utf-8'))
         videos.append(item)
 
         if border == 'bg_imgFlare_640x360.png'.encode('utf-8'):
