@@ -14,7 +14,6 @@ categories = menu.get_categories()
 if categories:
     mc.GetWindow(14000).GetList(100).SetItems(categories)
 
-mc.GetActiveWindow().PushState()
 mc.GetActiveWindow().GetList(100).SetFocusedItem(0)
 
 cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
@@ -22,7 +21,9 @@ cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
 if cat_id == 'live':
     pass
 else:
+    mc.GetActiveWindow().PushState()
     mc.ShowDialogWait()
+    items = menu.get_videos(cat_id)
     mc.GetActiveWindow().GetList(120).SetItems(items)
     mc.GetActiveWindow().GetControl(120).SetVisible(True)
     mc.HideDialogWait()

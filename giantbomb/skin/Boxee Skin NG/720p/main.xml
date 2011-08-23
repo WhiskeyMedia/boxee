@@ -263,5 +263,6 @@ else:
                 <fadetime>500</fadetime>
             </control>
         </control>
+        <include>Common_Now_Playing</include>
     </controls>
 </window>

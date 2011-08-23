@@ -3,7 +3,7 @@ import simplejson
 import urllib
 
 API_PATH = 'http://api.giantbomb.com'
-API_KEY = '57659bff0faacdf8ab9b2500b552e7fd37b4b677' # Default API key
+API_KEY = 'e5529a761ee3394ffbd237269966e9f53a4c7bf3' # Default API key
 
 lf_category = 0
 lf_video = 0
