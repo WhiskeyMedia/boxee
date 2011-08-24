@@ -1,8 +1,8 @@
 <app>
-  <id>giantbomb</id>
-  <name>Giant Bomb</name>
+  <id>comicvine</id>
+  <name>Comic Vine</name>
   <version>1.0</version>
-  <description>Watch all of Giant Bomb's videos.</description>
+  <description>Watch all of Comic Vine's videos.</description>
   <thumb>thumb.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>

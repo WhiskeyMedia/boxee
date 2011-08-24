@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<window type="window" id="14000">
+    <defaultcontrol always="false">100</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <animation effect="fade" time="100">WindowOpen</animation>
+    <animation effect="slide" end="0,576" time="100">WindowClose</animation>
+    <onload lang="python">
+<![CDATA[
+import menu
+
+mc.GetActiveWindow().GetList(100).SetFocusedItem(menu.lf_category)
+mc.GetActiveWindow().GetList(120).SetFocusedItem(menu.lf_video)
+]]>
+    </onload>
+    <controls>
+        <control type="group">
+            <control type="image">
+                <width>1280</width>
+                <height>720</height>
+                <texture>wall_lincoln_1920x1080.png</texture>
+            </control>
+            <control type="image">
+                <width>1280</width>
+                <height>720</height>
+                <texture>bg_backdrop_1920x1080.png</texture>
+            </control>
+            <control type="image" id="202">
+                <visible>Control.IsVisible(120)</visible>
+                <width>1280</width>
+                <height>720</height>
+                <texture>bg_dock_1920x1080.png</texture>
+            </control>
+            <control type="image" id="203">
+                <visible>Control.IsVisible(120)</visible>
+                <width>1280</width>
+                <height>720</height>
+                <texture>bg_list_1920x1080.png</texture>
+            </control>
+            <control type="scrollbar" id="25">
+                <visible>Control.IsVisible(120)</visible>
+                <posx>682</posx>
+                <posy>140</posy>
+                <width>12</width>
+                <height>534</height>
+                <texturesliderbarfocus border="8">track_scroll_12x534.png</texturesliderbarfocus>
+                <textureslidernib>track_scroll_10x76.png</textureslidernib>
+                <textureslidernibfocus>track_scroll_10x76.png</textureslidernibfocus>
+                <texturesliderbackground>track_bar_12x534.png</texturesliderbackground>
+                <orientation>vertical</orientation>
+                <showonepage>true</showonepage>
+            </control>
+            <control type="wraplist" id="100">
+                <focusposition>2</focusposition>
+                <posx>200</posx>
+                <posy>0</posy>
+                <width>1080</width>
+                <height>150</height>
+                <orientation>horizontal</orientation>
+                <itemlayout width="180">
+                    <control type="label">
+                        <posx>90</posx>
+                        <posy>25</posy>
+                        <width>180</width>
+                        <height>150</height>
+                        <align>center</align>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="180">
+                    <control type="image">
+                        <width>180</width>
+                        <height>130</height>
+                        <posy>-55</posy>
+                        <align>center</align>
+                        <texture>bg_listFocus_970x100.png</texture>
+                    </control>
+                    <control type="label">
+                        <posx>90</posx>
+                        <posy>25</posy>
+                        <width>180</width>
+                        <height>150</height>
+                        <align>center</align>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
+                    </control>
+                </focusedlayout>
+                <content type="action">
+                    <onclick lang="python">
+<![CDATA[
+mc.GetActiveWindow().ClearStateStack(True)
+mc.GetActiveWindow().PushState()
+menu.lf_category = mc.GetActiveWindow().GetList(100).GetFocusedItem()
+
+cat_id = mc.GetFocusedItem(14000, 100).GetProperty('id')
+
+if cat_id == 'live':
+    mc.GetPlayer().Play(mc.GetFocusedItem(14000, 100))
+
+elif cat_id == 'link':
+    if menu.link_account():
+        mc.ShowDialogOk("Success!", "Your account is now linked!\n\nIf you are a premium member, you should now have premium privileges.")
+    else:
+        mc.ShowDialogOk("We're really sorry, but...", "We could not link your account. Make sure the code you entered is correct and try again.")
+
+else:
+    mc.ShowDialogWait()
+
+    if cat_id == '5':
+        items = menu.get_eruns()
+    else:
+        items = menu.get_videos(cat_id)
+
+    mc.GetActiveWindow().GetList(120).SetItems(items)
+    mc.GetActiveWindow().GetControl(120).SetVisible(True)
+    mc.HideDialogWait()
+    mc.GetActiveWindow().GetControl(120).SetFocus()
+]]>
+                    </onclick>
+                </content>
+            </control>
+
+
+            <control type="list" id="120">
+                <visible>false</visible>
+                <onleft lang="python">
+<![CDATA[
+mc.GetActiveWindow().PopState()
+mc.GetActiveWindow().GetList(100).SetFocusedItem(menu.lf_category-1)
+]]>
+                </onleft>
+                <onright lang="python">
+<![CDATA[
+mc.GetActiveWindow().PopState()
+mc.GetActiveWindow().GetList(100).SetFocusedItem(menu.lf_category+1)
+]]>
+                </onright>
+                <posx>25</posx>
+                <posy>130</posy>
+                <width>660</width>
+                <height>550</height>
+                <orientation>vertical</orientation>
+                <pagecontrol>25</pagecontrol>
+                <preloaditems>100</preloaditems>
+                <itemlayout height="50">
+                    <control type="label">
+                        <posx>30</posx>
+                        <width>605</width>
+                        <height>50</height>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="50">
+                    <control type="image">
+                        <posx>10</posx>
+                        <width>645</width>
+                        <height>50</height>
+                        <texture>bg_listFocus_970x100.png</texture>
+                        <aspectratio>keep</aspectratio>
+                    </control>
+                    <control type="label">
+                        <posx>30</posx>
+                        <width>605</width>
+                        <height>50</height>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>white</textcolor>
+                        <shadowcolor>AA000000</shadowcolor>
+                    </control>
+                </focusedlayout>
+                <content type="action">
+                    <onclick lang="python">
+<![CDATA[
+menu.lf_video = mc.GetActiveWindow().GetList(120).GetFocusedItem()
+id = mc.GetFocusedItem(14000, 120).GetProperty('id')
+
+if id == '5-DP' or id == '5-P4' or id == '5-MO':
+    mc.GetActiveWindow().PushState()
+
+    mc.ShowDialogWait()
+    videos = menu.get_videos(id)
+    mc.GetActiveWindow().GetList(120).SetItems(videos)
+
+    mc.HideDialogWait()
+    mc.GetActiveWindow().GetControl(120).SetFocus()
+
+else:
+    mc.GetPlayer().PlayWithActionMenu(mc.GetFocusedItem(14000, 120))
+]]>
+                    </onclick>
+                </content>
+            </control>
+            <control type="label">
+                <visible>Control.HasFocus(120)</visible>
+                <font>sans30b</font>
+                <posx>735</posx>
+                <posy>150</posy>
+                <width>512</width>
+                <height>70</height>
+                <align>left</align>
+                <aligny>top</aligny>
+                <label>$INFO[Container(120).ListItem.Label]</label>
+                <textcolor>white</textcolor>
+                <shadowcolor>AA000000</shadowcolor>
+                <wrapmultiline>true</wrapmultiline>
+            </control>
+            <control type="label">
+                <visible>Control.HasFocus(120)</visible>
+                <posx>735</posx>
+                <posy>225</posy>
+                <width>512</width>
+                <height>85</height>
+                <align>left</align>
+                <aligny>top</aligny>
+                <label>$INFO[Container(120).ListItem.property(description)]</label>
+                <textcolor>white</textcolor>
+                <shadowcolor>AA000000</shadowcolor>
+                <wrapmultiline>true</wrapmultiline>
+            </control>
+            <control type="label">
+                <visible>Control.HasFocus(120)</visible>
+                <posx>735</posx>
+                <posy>310</posy>
+                <width>512</width>
+                <height>50</height>
+                <align>left</align>
+                <aligny>top</aligny>
+                <label>$INFO[Container(120).ListItem.Date]</label>
+                <textcolor>white</textcolor>
+                <shadowcolor>AA000000</shadowcolor>
+            </control>
+            <control type="image" id="401">
+                <visible>Control.HasFocus(120)</visible>
+                <posx>735</posx>
+                <posy>375</posy>
+                <width>512</width>
+                <height>288</height>
+                <texture>$INFO[Container(120).ListItem.Thumb]</texture>
+                <fadetime>500</fadetime>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(120)</visible>
+                <posx>735</posx>
+                <posy>375</posy>
+                <width>512</width>
+                <height>288</height>
+                <texture>$INFO[Container(120).ListItem.property(image0)]</texture>
+                <fadetime>500</fadetime>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(120)</visible>
+                <posx>735</posx>
+                <posy>663</posy>
+                <width>512</width>
+                <height>288</height>
+                <texture flipy="true" diffuse="mirror_diffuse_512x288.png">$INFO[Container(120).ListItem.Thumb]</texture>
+                <aspectratio scalediffuse="false"></aspectratio>
+                <fadetime>500</fadetime>
+            </control>
+        </control>
+        <include>Common_Now_Playing</include>
+    </controls>
+</window>
