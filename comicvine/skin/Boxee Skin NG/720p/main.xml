@@ -56,10 +56,10 @@ mc.GetActiveWindow().GetList(120).SetFocusedItem(menu.lf_video)
                 <width>1080</width>
                 <height>150</height>
                 <orientation>horizontal</orientation>
-                <itemlayout width="180">
+                <itemlayout width="200">
                     <control type="label">
                         <posx>90</posx>
-                        <posy>25</posy>
+                        <posy>22</posy>
                         <width>180</width>
                         <height>150</height>
                         <align>center</align>
@@ -68,18 +68,19 @@ mc.GetActiveWindow().GetList(120).SetFocusedItem(menu.lf_video)
                         <shadowcolor>AA000000</shadowcolor>
                     </control>
                 </itemlayout>
-                <focusedlayout width="180">
+                <focusedlayout width="200">
                     <control type="image">
-                        <width>180</width>
-                        <height>130</height>
-                        <posy>-55</posy>
+                        <width>220</width>
+                        <height>68</height>
+                        <posy>0</posy>
+                        <posx>-20</posx>
                         <align>center</align>
-                        <texture>bg_listFocus_970x100.png</texture>
+                        <texture>bg_menuFocus_220x68.png</texture>
                     </control>
                     <control type="label">
                         <posx>90</posx>
-                        <posy>25</posy>
-                        <width>180</width>
+                        <posy>22</posy>
+                        <width>200</width>
                         <height>150</height>
                         <align>center</align>
                         <label>$INFO[ListItem.Label]</label>
