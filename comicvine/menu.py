@@ -78,7 +78,7 @@ def get_api_key(link_code):
         return None
 
 def link_account():
-    mc.ShowDialogOk("Let's do this.", "To link your account, visit www.giantbomb.com/boxee to get a link code.\n\nEnter this code on the next screen.")
+    mc.ShowDialogOk("Let's do this.", "To link your account, visit www.comicvine.com/boxee to get a link code.\n\nEnter this code on the next screen.")
 
     link_code = mc.ShowDialogKeyboard("Enter your link code.", "", False).upper()
     new_api_key = get_api_key(link_code)
@@ -106,13 +106,6 @@ def get_videos(cat_id):
         response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=' + cat_id + '&sort=-publish_date&format=json')
 
     video_data = simplejson.loads(response)['results']
-
-    if cat_id == '5-P4':
-        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=100&limit=61&format=json')
-        video_data += simplejson.loads(response)['results']
-        video_data = [video for video in video_data if not video['name'].startswith('The Matrix Online')]
-    elif cat_id == '5-MO':
-        video_data = [video for video in video_data if video['name'].startswith('The Matrix Online')]
 
     videos = mc.ListItems()
 
