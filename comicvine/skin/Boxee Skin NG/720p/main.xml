@@ -17,7 +17,7 @@ mc.GetActiveWindow().GetList(120).SetFocusedItem(menu.lf_video)
             <control type="image">
                 <width>1280</width>
                 <height>720</height>
-                <texture>wall_lincoln_1920x1080.png</texture>
+                <texture>wall_generic_1920x1080.png</texture>
             </control>
             <control type="image">
                 <width>1280</width>
