@@ -72,7 +72,7 @@ mc.GetActiveWindow().GetList(120).SetFocusedItem(menu.lf_video)
                     <control type="image">
                         <width>220</width>
                         <height>68</height>
-                        <posy>0</posy>
+                        <posy>2</posy>
                         <posx>-20</posx>
                         <align>center</align>
                         <texture>bg_menuFocus_220x68.png</texture>
@@ -139,35 +139,35 @@ mc.GetActiveWindow().GetList(100).SetFocusedItem(menu.lf_category+1)
 ]]>
                 </onright>
                 <posx>25</posx>
-                <posy>130</posy>
+                <posy>140</posy>
                 <width>660</width>
-                <height>550</height>
+                <height>540</height>
                 <orientation>vertical</orientation>
                 <pagecontrol>25</pagecontrol>
                 <preloaditems>100</preloaditems>
-                <itemlayout height="50">
+                <itemlayout height="45">
                     <control type="label">
                         <posx>30</posx>
                         <width>605</width>
-                        <height>50</height>
+                        <height>45</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
                         <shadowcolor>AA000000</shadowcolor>
                     </control>
                 </itemlayout>
-                <focusedlayout height="50">
+                <focusedlayout height="45">
                     <control type="image">
                         <posx>10</posx>
                         <width>645</width>
-                        <height>50</height>
+                        <height>45</height>
                         <texture>bg_listFocus_970x100.png</texture>
                         <aspectratio>keep</aspectratio>
                     </control>
                     <control type="label">
                         <posx>30</posx>
                         <width>605</width>
-                        <height>50</height>
+                        <height>45</height>
                         <aligny>center</aligny>
                         <label>$INFO[ListItem.Label]</label>
                         <textcolor>white</textcolor>
