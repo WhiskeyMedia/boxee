@@ -2,11 +2,11 @@
   <id>comicvine</id>
   <name>Comic Vine</name>
   <version>1.0</version>
-  <description>Watch all of Comic Vine's videos.</description>
-  <thumb>thumb.png</thumb>
+  <description>Comic Vine is the world's largest comic book website. Watch hundreds of original videos and interviews with comic creators and artists.</description>
+  <thumb>http://media.comicvine.com/media/devices/boxee.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>
-  <copyright>whiskeymedia</copyright>
+  <copyright>whiskey Media</copyright>
   <email>boxee@whiskeymedia.com</email>
   <type>skin</type>
   <startWindow>start</startWindow>

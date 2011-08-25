@@ -3,10 +3,10 @@
   <name>Giant Bomb</name>
   <version>1.0</version>
   <description>Watch all of Giant Bomb's videos.</description>
-  <thumb>http://media.giantbomb.com/devices/boxee.png</thumb>
+  <thumb>http://media.giantbomb.com/media/devices/boxee.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>
-  <copyright>whiskeymedia</copyright>
+  <copyright>whiskey Media</copyright>
   <email>boxee@whiskeymedia.com</email>
   <type>skin</type>
   <startWindow>start</startWindow>
