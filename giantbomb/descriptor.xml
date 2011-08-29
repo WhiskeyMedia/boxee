@@ -1,8 +1,8 @@
 <app>
   <id>giantbomb</id>
   <name>Giant Bomb</name>
-  <version>1.0</version>
-  <description>Watch all of Giant Bomb's videos.</description>
+  <version>2.0</version>
+  <description>Giant Bomb is a video game enthusiast site with a sense of humor. Watch Jeff Gerstmann and crew in thousands of original game videos, reviews and previews.</description>
   <thumb>http://media.giantbomb.com/media/devices/boxee.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>
