@@ -2,7 +2,7 @@ import mc
 import simplejson
 import urllib
 
-API_PATH = 'http://api.giantbomb.com'
+API_PATH = 'http://api.animevice.com'
 API_KEY = '57659bff0faacdf8ab9b2500b552e7fd37b4b677' # Default API key
 
 lf_category = 0
