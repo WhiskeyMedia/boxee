@@ -81,11 +81,11 @@ def link_account():
     mc.ShowDialogOk("Let's do this.", "To link your account, visit www.comicvine.com/boxee to get a link code.\n\nEnter this code on the next screen.")
 
     link_code = mc.ShowDialogKeyboard("Enter your link code.", "", False).upper()
-    new_api_key = str(get_api_key(link_code))
+    new_api_key = get_api_key(link_code)
     if new_api_key:
-        mc.GetApp().GetLocalConfig().SetValue('api_key', new_api_key)
+        mc.GetApp().GetLocalConfig().SetValue('api_key', str(new_api_key))
         global API_KEY
-        API_KEY = new_api_key
+        API_KEY = str(new_api_key)
         return True
     else:
         return False
@@ -96,12 +96,6 @@ def get_videos(cat_id):
     elif cat_id == 'search':
         query = mc.ShowDialogKeyboard("Search", "", False).replace(' ', '%20')
         response = mc.Http().Get(API_PATH + '/search/?api_key=' + API_KEY + '&resources=video&query=' + query + '&format=json')
-    elif cat_id == '5-DP':
-        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=161&format=json')
-    elif cat_id == '5-P4':
-        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&format=json')
-    elif cat_id == '5-MO':
-        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=105&limit=21&format=json')
     else:
         response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=' + cat_id + '&sort=-publish_date&format=json')
 

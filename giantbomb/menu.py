@@ -101,11 +101,11 @@ def link_account():
     mc.ShowDialogOk("Let's do this.", "To link your account, visit www.giantbomb.com/boxee to get a link code.\n\nEnter this code on the next screen.")
 
     link_code = mc.ShowDialogKeyboard("Enter your link code.", "", False).upper()
-    new_api_key = str(get_api_key(link_code))
+    new_api_key = get_api_key(link_code)
     if new_api_key:
-        mc.GetApp().GetLocalConfig().SetValue('api_key', new_api_key)
+        mc.GetApp().GetLocalConfig().SetValue('api_key', str(new_api_key))
         global API_KEY
-        API_KEY = new_api_key
+        API_KEY = str(new_api_key)
         return True
     else:
         return False

@@ -1,7 +1,7 @@
 <app>
   <id>comicvine</id>
   <name>Comic Vine</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <description>Comic Vine is the world's largest comic book website. Watch hundreds of original videos and interviews with comic creators and artists.</description>
   <thumb>http://media.comicvine.com/media/devices/boxee.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
