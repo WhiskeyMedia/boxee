@@ -91,7 +91,7 @@ def get_api_key(link_code):
             response = mc.Http().Get(API_PATH + '/validate?link_code=' + link_code + '&format=json')
             data = simplejson.loads(response)
             api_key = data['api_key']
-            return api_key
+            return str(api_key)
         except:
             return None
     else:
@@ -103,9 +103,9 @@ def link_account():
     link_code = mc.ShowDialogKeyboard("Enter your link code.", "", False).upper()
     new_api_key = get_api_key(link_code)
     if new_api_key:
-        mc.GetApp().GetLocalConfig().SetValue('api_key', str(new_api_key))
+        mc.GetApp().GetLocalConfig().SetValue('api_key', new_api_key)
         global API_KEY
-        API_KEY = str(new_api_key)
+        API_KEY = new_api_key
         return True
     else:
         return False

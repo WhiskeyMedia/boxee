@@ -1,9 +1,9 @@
 <app>
-  <id>giantbomb</id>
-  <name>Giant Bomb</name>
-  <version>2.1</version>
+  <id>screened</id>
+  <name>Screened</name>
+  <version>1.0</version>
   <description>Giant Bomb is a video game enthusiast site with a sense of humor. Watch Jeff Gerstmann and crew in thousands of original game videos, reviews and previews.</description>
-  <thumb>http://media.giantbomb.com/media/devices/boxee.png</thumb>
+  <thumb>http://media.screened.com/media/devices/boxee.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>
   <copyright>whiskey Media</copyright>
@@ -12,4 +12,5 @@
   <startWindow>start</startWindow>
   <platform>all</platform>
   <minversion>0.9.21</minversion>
+  <test-app>true</test-app>
 </app>

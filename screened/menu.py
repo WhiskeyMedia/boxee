@@ -2,8 +2,8 @@ import mc
 import simplejson
 import urllib
 
-API_PATH = 'http://api.comicvine.com'
-API_KEY = '4a54f2e9f860c0230764deb5c01ceea49fe98dde' # Default API key
+API_PATH = 'http://api.screened.com'
+API_KEY = '3a5d29f3544c5232254708c75bc9c3965bdb526e' # Default API key
 
 lf_category = 0
 lf_video = 0

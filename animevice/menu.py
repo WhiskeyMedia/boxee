@@ -2,8 +2,8 @@ import mc
 import simplejson
 import urllib
 
-API_PATH = 'http://api.comicvine.com'
-API_KEY = '4a54f2e9f860c0230764deb5c01ceea49fe98dde' # Default API key
+API_PATH = 'http://api.giantbomb.com'
+API_KEY = '57659bff0faacdf8ab9b2500b552e7fd37b4b677' # Default API key
 
 lf_category = 0
 lf_video = 0
@@ -78,7 +78,7 @@ def get_api_key(link_code):
         return None
 
 def link_account():
-    mc.ShowDialogOk("Let's do this.", "To link your account, visit www.comicvine.com/boxee to get a link code.\n\nEnter this code on the next screen.")
+    mc.ShowDialogOk("Let's do this.", "To link your account, visit www.giantbomb.com/boxee to get a link code.\n\nEnter this code on the next screen.")
 
     link_code = mc.ShowDialogKeyboard("Enter your link code.", "", False).upper()
     new_api_key = get_api_key(link_code)
