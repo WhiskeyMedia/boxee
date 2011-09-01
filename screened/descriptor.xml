@@ -2,7 +2,7 @@
   <id>screened</id>
   <name>Screened</name>
   <version>1.0</version>
-  <description>Giant Bomb is a video game enthusiast site with a sense of humor. Watch Jeff Gerstmann and crew in thousands of original game videos, reviews and previews.</description>
+  <description>Screened is a site about movies that doesn't take itself too seriously. Watch reviews, trailers and original videos about movies.</description>
   <thumb>http://media.screened.com/media/devices/boxee.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>

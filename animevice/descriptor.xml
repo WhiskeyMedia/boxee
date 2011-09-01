@@ -2,7 +2,7 @@
   <id>animevice</id>
   <name>Anime Vice</name>
   <version>1.0</version>
-  <description>Giant Bomb is a video game enthusiast site with a sense of humor. Watch Jeff Gerstmann and crew in thousands of original game videos, reviews and previews.</description>
+  <description>Anime Vice is the place to go for your anime fix. Watch trailers, reviews, and original anime-related content.</description>
   <thumb>http://media.animevice.com/media/devices/boxee.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>
