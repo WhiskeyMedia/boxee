@@ -78,7 +78,7 @@ def get_api_key(link_code):
         return None
 
 def link_account():
-    mc.ShowDialogOk("Let's do this.", "To link your account, visit www.comicvine.com/boxee to get a link code.\n\nEnter this code on the next screen.")
+    mc.ShowDialogOk("Let's do this.", "To link your account, visit www.screened.com/boxee to get a link code.\n\nEnter this code on the next screen.")
 
     link_code = mc.ShowDialogKeyboard("Enter your link code.", "", False).upper()
     new_api_key = get_api_key(link_code)
