@@ -2,8 +2,8 @@ import mc
 import simplejson
 import urllib
 
-API_PATH = 'http://api.screened.com'
-API_KEY = '3a5d29f3544c5232254708c75bc9c3965bdb526e' # Default API key
+API_PATH = 'http://api.tested.com'
+API_KEY = 'ca8c4515da52fdb3e3961e4273763c770fcce1a0' # Default API key
 
 lf_category = 0
 lf_video = 0
