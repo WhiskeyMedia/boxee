@@ -1,0 +1,16 @@
+<app>
+  <id>tested</id>
+  <name>Tested</name>
+  <version>1.0</version>
+  <description>Tested is a tech site by dudes who love tech. Watch videos about the newest gadgets, gizmos, and coffee-related products.</description>
+  <thumb>http://media.tested.com/media/devices/boxee.png</thumb>
+  <repository>http://dir.boxee.tv/apps</repository>
+  <media>video</media>
+  <copyright>whiskey Media</copyright>
+  <email>boxee@whiskeymedia.com</email>
+  <type>skin</type>
+  <startWindow>start</startWindow>
+  <platform>all</platform>
+  <minversion>0.9.21</minversion>
+  <test-app>true</test-app>
+</app>

@@ -51,9 +51,9 @@ mc.GetActiveWindow().GetList(120).SetFocusedItem(menu.lf_video)
             </control>
             <control type="wraplist" id="100">
                 <focusposition>2</focusposition>
-                <posx>200</posx>
+                <posx>275</posx>
                 <posy>0</posy>
-                <width>1080</width>
+                <width>1005</width>
                 <height>150</height>
                 <orientation>horizontal</orientation>
                 <itemlayout width="200">
