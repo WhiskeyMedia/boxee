@@ -2,7 +2,7 @@
   <id>tested</id>
   <name>Tested</name>
   <version>1.0</version>
-  <description>Tested is a tech site by dudes who love tech. Watch videos about the newest gadgets, gizmos, and coffee-related products.</description>
+  <description>Tested covers all the latest technology--everything from smartphones and tablets to cameras and coffee. But, Tested does more than just tell you what to buy, Will and Norm show you how to get more from the gear you already own.</description>
   <thumb>http://media.tested.com/media/devices/boxee.png</thumb>
   <repository>http://dir.boxee.tv/apps</repository>
   <media>video</media>
