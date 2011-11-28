@@ -3,6 +3,7 @@ import simplejson
 
 API_PATH = 'http://api.giantbomb.com'
 API_KEY = '57659bff0faacdf8ab9b2500b552e7fd37b4b677' # Default API key
+WEB_PATH = 'http://www.giantbomb.com'
 
 lf_category = 0
 lf_video = 0
@@ -68,6 +69,11 @@ def get_eruns():
     eruns = mc.ListItems()
 
     item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
+    item.SetLabel('Chrono Trigger'.encode('utf-8'))
+    item.SetProperty('id', '5-CT'.encode('utf-8'))
+    eruns.append(item)
+
+    item = mc.ListItem(mc.ListItem.MEDIA_UNKNOWN)
     item.SetLabel('Deadly Premonition'.encode('utf-8'))
     item.SetProperty('id', '5-DP'.encode('utf-8'))
     eruns.append(item)
@@ -115,8 +121,10 @@ def get_videos(cat_id):
     elif cat_id == 'search':
         query = mc.ShowDialogKeyboard("Search", "", False).replace(' ', '%20')
         response = mc.Http().Get(API_PATH + '/search/?api_key=' + API_KEY + '&resources=video&query=' + query + '&format=json')
+    elif cat_id == '5-CT':
+        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=240&format=json')
     elif cat_id == '5-DP':
-        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=161&format=json')
+        response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&offset=161&limit=79&format=json')
     elif cat_id == '5-P4':
         response = mc.Http().Get(API_PATH + '/videos/?api_key=' + API_KEY + '&video_type=5&format=json')
     elif cat_id == '5-MO':
@@ -151,6 +159,7 @@ def get_videos(cat_id):
         item.SetPath(url.encode('utf-8'))
         item.SetDate(int(date[0]), int(date[1]), int(date[2]))
         item.SetDuration(vid['length_seconds'])
+        item.SetProperty('id', str(vid['id']).encode('utf-8'))
         videos.append(item)
 
         if border == 'bg_imgFlare_640x360.png'.encode('utf-8'):

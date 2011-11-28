@@ -180,7 +180,7 @@ mc.GetActiveWindow().GetList(100).SetFocusedItem(menu.lf_category+1)
 menu.lf_video = mc.GetActiveWindow().GetList(120).GetFocusedItem()
 id = mc.GetFocusedItem(14000, 120).GetProperty('id')
 
-if id == '5-DP' or id == '5-P4' or id == '5-MO':
+if id.startswith('5-'):
     mc.GetActiveWindow().PushState()
 
     mc.ShowDialogWait()
